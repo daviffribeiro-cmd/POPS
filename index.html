@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -328,6 +328,16 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   border-radius: 6px; padding: 2px 8px; white-space: nowrap; flex-shrink: 0;
 }
 .pop-mini-name { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.4; }
+.pop-mini-card--policy {
+  background: var(--goldbg); border: 1.5px solid var(--gold2);
+}
+.pop-mini-card--policy:hover {
+  background: #fef3c7; border-color: var(--gold); box-shadow: var(--shadow);
+}
+.pop-mini-card--policy .pop-mini-num {
+  color: var(--gold); background: rgba(184,134,11,0.13);
+}
+.pop-mini-card--policy .pop-mini-name { color: var(--gold-dark, #7a5200); }
 
 /* ===== SEARCH BAR WITHIN ALL POPS ===== */
 .pop-search-input {
@@ -441,7 +451,7 @@ var POPS_DB = [
     nome: 'Acompanhamento de Planejamento',
     descricao: 'Define o processo de acompanhamento do planejamento pedagógico dos professores pela coordenação.',
     responsaveis: ['Coordenação Pedagógica', 'Professor'],
-    keywords: ['planejamento','plano de aula','aula','professor','pedagógico','coordenação','acompanhar','plano','plano anual','cronograma','conteúdo','currículo'],
+    keywords: ['planejamento','plano de aula','plano de ensino','plano anual','sequencia didatica','cronograma','conteudo','curriculo','pedagogico','professor sem plano','plano nao entregue','planejamento atrasado','entrega planejamento','nao entregou plano','revisao plano','plano pendente','acompanhar professor','acompanhamento pedagogico','professor entregou planejamento'],
     solucao: [
       'Verificar se o professor entregou o planejamento no prazo estabelecido.',
       'Acessar o sistema (Layers) para consultar o planejamento digital do professor.',
@@ -455,7 +465,7 @@ var POPS_DB = [
     nome: 'Advertência ao Aluno',
     descricao: 'Estabelece o protocolo para aplicação de advertência formal a alunos com problemas de comportamento ou disciplina.',
     responsaveis: ['Coordenação', 'Orientação Educacional'],
-    keywords: ['advertência','disciplina','indisciplina','comportamento','infração','regra','conduta','aluno problema','punição','sanção','desobediência','xingamento','briga','conflito entre alunos','desrespeito','falta de respeito','professor desrespeitado'],
+    keywords: ['advertencia','disciplina','indisciplina','comportamento','infracao','regra','conduta','punicao','sancao','desobediencia','xingamento','briga','brigou','conflito entre alunos','desrespeito','falta de respeito','professor desrespeitado','bagunca','tumulto','agrediu','violencia','nao obedece','desafiou','palavrao','xingou','bateu','empurrou','respondeu grosso','esta brigando','fez bagunca','perturbou','aluno agressivo','cuspiu','jogou objeto','ameacou','nao aceita regra','prejudicou aula','aluno problema','provocou','desafio','aluno desafiador','grosseria'],
     solucao: [
       'Chamar o aluno para uma conversa formal com o coordenador.',
       'Ouvir o aluno e registrar a versão dele sobre o ocorrido.',
@@ -470,7 +480,7 @@ var POPS_DB = [
     nome: 'Aplicativo Layers (Meu Matriz)',
     descricao: 'Orienta o uso correto do aplicativo Layers para comunicação, lançamentos e gestão escolar.',
     responsaveis: ['Todos os setores'],
-    keywords: ['layers','aplicativo','meu matriz','app','sistema','plataforma','digital','comunicado','notificação','login','acesso','senha','cadastro layers','comunicação digital'],
+    keywords: ['layers','aplicativo','meu matriz','app','sistema','plataforma','digital','comunicado','notificacao','login','acesso','senha','cadastro layers','comunicacao digital','nao consegue acessar','nao abre aplicativo','senha errada','esqueceu senha','nao recebe notificacao','erro no sistema','nao logar','problema aplicativo','nao recebe mensagem','nao funciona app','problema layers','acesso layers','redefinir senha','nao consigo entrar'],
     solucao: [
       'Verificar se o usuário (professor/responsável) possui cadastro ativo no Layers.',
       'Acessar o painel administrativo para reenviar convite de acesso.',
@@ -484,7 +494,7 @@ var POPS_DB = [
     nome: 'Atendimento ao Professor',
     descricao: 'Define os fluxos de atendimento, suporte e orientação aos professores pela equipe gestora.',
     responsaveis: ['Coordenação Pedagógica', 'Direção'],
-    keywords: ['professor','atendimento professor','suporte docente','orientação pedagógica','reunião professor','demanda professor','dificuldade professor','problema professor','escuta','ouvir professor'],
+    keywords: ['atendimento professor','suporte docente','orientacao pedagogica','reuniao professor','demanda professor','dificuldade professor','problema professor','escuta','ouvir professor','professor reclamou','professor pede ajuda','professor com problema','professor veio conversar','professor solicita','professor pede reuniao','professor esta mal','professor precisa atendimento','professor quer conversar','queixa de professor','professor insatisfeito','professor pediu'],
     solucao: [
       'Agendar atendimento com o professor conforme POP 26 (Agendamento de Atendimento).',
       'Criar ambiente de escuta ativa, sem julgamentos, registrando as demandas.',
@@ -499,7 +509,7 @@ var POPS_DB = [
     nome: 'Atendimento de Alunos',
     descricao: 'Protocolo para atendimento de alunos pela coordenação e orientação educacional.',
     responsaveis: ['Coordenação', 'SOE', 'Orientação Educacional'],
-    keywords: ['atendimento aluno','aluno','conversa aluno','ouvir aluno','demanda aluno','queixa aluno','reclamação aluno','aluno pede ajuda','aluno triste','aluno chorando','problema pessoal aluno'],
+    keywords: ['atendimento aluno','conversa aluno','ouvir aluno','demanda aluno','queixa aluno','reclamacao aluno','aluno pede ajuda','aluno triste','aluno chorando','problema pessoal aluno','aluno veio falar','quer conversar com aluno','aluno precisa de ajuda','aluno com problema pessoal','aluno pediu para falar','aluno com dificuldade','aluno sozinho','aluno quieto','aluno abatido','aluno veio me procurar','preciso conversar com aluno','aluno contou'],
     solucao: [
       'Receber o aluno em sala reservada, garantindo privacidade e acolhimento.',
       'Ouvir ativamente sem interromper, demonstrando empatia.',
@@ -514,7 +524,7 @@ var POPS_DB = [
     nome: 'Autorização de Visita Escolar',
     descricao: 'Establece os procedimentos para autorizar visitas, excursões e saídas escolares.',
     responsaveis: ['Coordenação', 'Secretaria'],
-    keywords: ['visita','excursão','passeio','saída','viagem','autorização visita','saída escolar','evento externo','atividade externa','turma fora da escola'],
+    keywords: ['visita escolar','excursao','passeio','saida escolar','viagem','autorizacao visita','evento externo','atividade externa','turma fora da escola','quer fazer passeio','saida com turma','visita cultural','levar alunos fora','atividade fora da escola','saida pedagogica','turma vai sair','organizando excursao','visita tecnica','passeio cultural','autorizacao para saida'],
     solucao: [
       'Preencher o formulário de autorização com data, local, horário e objetivo da visita.',
       'Enviar autorização aos responsáveis com pelo menos 5 dias de antecedência via Layers.',
@@ -528,7 +538,7 @@ var POPS_DB = [
     nome: 'Carômetro',
     descricao: 'Procedimento para criação, atualização e uso do carômetro de alunos e professores.',
     responsaveis: ['Secretaria', 'Coordenação'],
-    keywords: ['carômetro','foto','fotografia','identificação','cadastro','imagem aluno','reconhecimento facial','lista de alunos','turma foto'],
+    keywords: ['carometro','foto','fotografia','identificacao','imagem aluno','reconhecimento','lista de alunos','turma foto','atualizar fotos','fotos dos alunos','identificar aluno','foto desatualizada','imagem turma','lista com fotos','foto cadastro','atualizar cadastro foto'],
     solucao: [
       'Verificar se todas as fotos dos alunos estão atualizadas no sistema.',
       'Solicitar fotos dos alunos novos via responsáveis ou pelo sistema Layers.',
@@ -542,7 +552,7 @@ var POPS_DB = [
     nome: 'Controle de Entrada de Professores',
     descricao: 'Define como registrar e controlar a entrada e saída de professores na unidade.',
     responsaveis: ['Coordenação', 'Secretaria', 'Portaria'],
-    keywords: ['entrada professor','ponto professor','frequência professor','controle docente','registro entrada','professor não assinou','biometria','registro de ponto','horário professor'],
+    keywords: ['entrada professor','ponto professor','frequencia professor','controle docente','registro entrada','professor nao assinou','biometria','registro de ponto','horario professor','nao assinou ponto','professor sem registro','esqueceu assinar','nao marcou ponto','biometria falhou','ponto professor errado','controle frequencia docente','professor nao registrou'],
     solucao: [
       'Verificar se o professor registrou sua entrada no sistema de controle.',
       'Caso haja falha no sistema, registrar manualmente no livro de ponto da coordenação.',
@@ -556,7 +566,7 @@ var POPS_DB = [
     nome: 'Entrada / Atraso de Alunos',
     descricao: 'Protocolo para receber alunos que chegam após o horário de entrada estabelecido.',
     responsaveis: ['Portaria', 'Coordenação', 'Secretaria'],
-    keywords: ['atraso','atrasado','chegou tarde','entrada','portaria','horário','aluno fora do horário','aluno chegou depois','chegada tardia','aluno atrasado','não estava na hora','chegou após início'],
+    keywords: ['atraso','atrasado','chegou tarde','entrada','portaria','horario','aluno fora do horario','aluno chegou depois','chegada tardia','aluno atrasado','nao estava na hora','chegou apos inicio','chegou depois do horario','portao fechado','passou do horario','nao entrou na hora','aluno chegou tarde','atrasou','entrou atrasado','sem justificativa atraso','chegou depois que comecou','fora do horario de entrada'],
     solucao: [
       'Receber o aluno na portaria com acolhimento, sem constrangimento.',
       'Registrar o atraso no livro/sistema com horário de chegada e justificativa.',
@@ -571,7 +581,7 @@ var POPS_DB = [
     nome: 'Falta de Professores',
     descricao: 'Define os procedimentos a serem adotados quando um professor falta sem substituto disponível.',
     responsaveis: ['Coordenação Pedagógica', 'Direção'],
-    keywords: ['falta professor','professor faltou','ausência professor','professor não veio','sem professor','turma sem aula','substituição professor','reposição','aula vaga','professor ausente','professor ligou que não vem'],
+    keywords: ['falta professor','professor faltou','ausencia professor','professor nao veio','sem professor','turma sem aula','substituicao professor','reposicao','aula vaga','professor ausente','professor ligou que nao vem','turma sozinha','sala sem professor','nao apareceu professor','professor cancelou','professor nao confirmou','sem docente','nao tem professor','cadeira vaga','professor nao apareceu','professor avisou falta','professor de licenca','nao veio dar aula'],
     solucao: [
       'Verificar se há professor reserva ou com disponibilidade na grade para assumir a turma.',
       'Acionar imediatamente outro professor ou pedagogo para acompanhar a turma.',
@@ -587,7 +597,7 @@ var POPS_DB = [
     nome: 'Liberação de Alunos',
     descricao: 'Protocolo para liberar alunos antes do horário regular, com segurança e rastreabilidade.',
     responsaveis: ['Coordenação', 'Portaria', 'Secretaria'],
-    keywords: ['liberar aluno','liberação','sair mais cedo','saída antecipada','responsável buscar','pegar aluno','aluno indo embora','aluno sair','autorização saída','buscar antes do horário','responsável veio buscar'],
+    keywords: ['liberar aluno','liberacao','sair mais cedo','saida antecipada','responsavel buscar','pegar aluno','aluno indo embora','aluno sair','autorizacao saida','buscar antes do horario','responsavel veio buscar','mae veio buscar','pai veio buscar','responsavel na portaria','aluno quer sair','familia veio buscar','buscar aluno','tio veio buscar','avo buscar','retirar aluno','aluno vai sair','pegar antes do horario','retirando aluno','parente buscar','responsavel quer pegar'],
     solucao: [
       'Verificar a identidade do responsável que veio buscar o aluno na portaria.',
       'Conferir se o responsável está cadastrado no sistema como autorizado para retirada.',
@@ -602,7 +612,7 @@ var POPS_DB = [
     nome: 'Mural das Turmas',
     descricao: 'Define a gestão e atualização do mural informativo das turmas.',
     responsaveis: ['Coordenação', 'Professores'],
-    keywords: ['mural','mural turma','informativo','painel','exposição','avisos turma','cartaz','decoração'],
+    keywords: ['mural','mural turma','informativo','painel','exposicao','avisos turma','cartaz','decoracao','atualizar mural','mural desatualizado','parede da turma','exposicao de trabalho','colocar avisos','mural vazio','atualizar painel','trabalhos no mural'],
     solucao: [
       'Verificar se o mural da turma está atualizado com as informações do período.',
       'Incluir no mural: datas importantes, ranking de desempenho, trabalhos dos alunos.',
@@ -616,7 +626,7 @@ var POPS_DB = [
     nome: 'Pasta da Turma e Ficha Individual do Aluno',
     descricao: 'Organização e manutenção da pasta da turma com documentação de cada aluno.',
     responsaveis: ['Secretaria', 'Coordenação'],
-    keywords: ['pasta turma','ficha aluno','documento aluno','prontuário','arquivar','histórico aluno','ficha cadastral','registro aluno','documentação'],
+    keywords: ['pasta turma','ficha aluno','documento aluno','prontuario','arquivar','historico aluno','ficha cadastral','registro aluno','documentacao','falta documento','documento pendente','arquivo aluno','documentacao pendente','organizar pasta','ficha desatualizada','pasta desorganizada','guardar documento','arquivo da turma','ficha do aluno'],
     solucao: [
       'Verificar se a pasta da turma contém todas as fichas individuais atualizadas.',
       'Incluir novos documentos: advertências, autorizações, laudos, declarações.',
@@ -630,7 +640,7 @@ var POPS_DB = [
     nome: 'Processos de Carteirinhas',
     descricao: 'Define o processo de emissão, renovação e controle das carteirinhas estudantis.',
     responsaveis: ['Secretaria'],
-    keywords: ['carteirinha','documento estudantil','identidade estudantil','cartão aluno','renovação carteirinha','segunda via carteirinha'],
+    keywords: ['carteirinha','documento estudantil','identidade estudantil','cartao aluno','renovacao carteirinha','segunda via carteirinha','perdeu carteirinha','carteirinha vencida','precisa de carteirinha','segunda via','emitir documento','identidade aluno','carteirinha estudantil','solicitar carteirinha'],
     solucao: [
       'Receber a solicitação de carteirinha e verificar os documentos do aluno.',
       'Registrar no sistema e encaminhar para confecção conforme calendário.',
@@ -643,7 +653,7 @@ var POPS_DB = [
     nome: 'Rotina de Avaliação',
     descricao: 'Estabelece a rotina e os procedimentos para aplicação de avaliações.',
     responsaveis: ['Coordenação Pedagógica', 'Professores'],
-    keywords: ['avaliação','prova','teste','nota','avaliação bimestral','calendário avaliação','aplicação prova','fiscalização prova','dia de prova','rotina avaliação','gabarito','correção prova'],
+    keywords: ['avaliacao','prova','teste','nota','avaliacao bimestral','calendario avaliacao','aplicacao prova','fiscalizacao prova','dia de prova','rotina avaliacao','gabarito','correcao prova','organizacao prova','aplicar prova','fiscalizar prova','sala de prova','aluno fez cola','cola na prova','irregularidade prova','prova amanha','aplicando prova','prova hoje','aluno colando'],
     solucao: [
       'Verificar se a avaliação está alinhada com o calendário bimestral da escola.',
       'Conferir se o professor cadastrou a avaliação no sistema com antecedência.',
@@ -658,7 +668,7 @@ var POPS_DB = [
     nome: 'Segunda Chamada e Prova de Recuperação',
     descricao: 'Procedimentos para solicitação e aplicação de segunda chamada e recuperação.',
     responsaveis: ['Secretaria', 'Coordenação Pedagógica', 'Professores'],
-    keywords: ['segunda chamada','recuperação','prova recuperação','faltou prova','prova perdida','recuperação final','recuperação paralela','pedir segunda chamada','aluno não fez prova','reprovação'],
+    keywords: ['segunda chamada','recuperacao','prova recuperacao','faltou prova','prova perdida','recuperacao final','recuperacao paralela','pedir segunda chamada','aluno nao fez prova','reprovacao','aluno perdeu prova','faltou no dia da prova','precisa de recuperacao','nao vai passar','nota baixa','esta reprovando','precisa recuperar nota','solicitar segunda chamada','aluno reprovou','quer fazer segunda chamada'],
     solucao: [
       'Verificar se o aluno solicitou segunda chamada dentro do prazo (geralmente 48h após a prova).',
       'Conferir se a justificativa apresentada é válida conforme regimento escolar.',
@@ -673,7 +683,7 @@ var POPS_DB = [
     nome: 'Escaneamento de Cartão Resposta',
     descricao: 'Define o processo técnico de escaneamento e correção automática dos cartões de resposta.',
     responsaveis: ['Secretaria', 'Coordenação Pedagógica'],
-    keywords: ['cartão resposta','escaneamento','gabarito','correção automática','scanner','leitura óptica','resultado avaliação','nota automática','digitalizar provas'],
+    keywords: ['cartao resposta','escaneamento','gabarito','correcao automatica','scanner','leitura optica','resultado avaliacao','nota automatica','digitalizar provas','escanear cartao','cartao resposta erro','leitura cartao','digitalizar prova','resultado prova automatico','ler cartao','processar cartao resposta'],
     solucao: [
       'Recolher os cartões resposta após a aplicação da avaliação.',
       'Verificar se todos os cartões estão preenchidos corretamente (nome, turma, número).',
@@ -688,7 +698,7 @@ var POPS_DB = [
     nome: 'Sala de Monitoria e Sala de Estudo',
     descricao: 'Regula o uso das salas de monitoria e reforço, com responsabilidades e horários.',
     responsaveis: ['Coordenação', 'Monitores', 'Professores'],
-    keywords: ['monitoria','reforço','sala estudo','apoio pedagógico','monitor','aula de reforço','dificuldade aprendizagem','recuperação aulas','aluno com dificuldade','aprendizagem'],
+    keywords: ['monitoria','reforco','sala estudo','apoio pedagogico','monitor','aula de reforco','dificuldade aprendizagem','recuperacao aulas','aluno com dificuldade','aprendizagem','aluno com dificuldade aprendizagem','nao entende a materia','precisa de reforco','aluno defasado','nao acompanha turma','precisa de apoio','aprendizagem lenta','nao aprende','dificuldade escola','aluno atrasado pedagogicamente','nao consegue acompanhar','baixo rendimento'],
     solucao: [
       'Identificar os alunos com dificuldade e encaminhá-los para a sala de monitoria.',
       'Verificar o horário disponível da sala e dos monitores.',
@@ -703,7 +713,7 @@ var POPS_DB = [
     nome: 'Medicamentos e Kit de Primeiros Socorros',
     descricao: 'Procedimentos para administração de medicamentos e uso do kit de primeiros socorros.',
     responsaveis: ['Coordenação', 'Equipe de Saúde', 'Secretaria'],
-    keywords: ['medicamento','remédio','kit primeiros socorros','saúde','doença','mal estar','febre','dor de cabeça','aluno doente','emergência saúde','atendimento médico','crise','kit médico','curativo','primeiro socorro'],
+    keywords: ['medicamento','remedio','kit primeiros socorros','saude','doenca','mal estar','febre','dor de cabeca','aluno doente','emergencia saude','atendimento medico','crise','kit medico','curativo','primeiro socorro','passou mal','nao esta bem','desmaiou','vomitou','esta com tontura','enjoado','dor forte','febre alta','aluno adoeceu','aluno gripado','esta doente','precisa de remedio','sangramento','esta passando mal','aluno com febre','aluno sentindo dor','nausea'],
     solucao: [
       'Avaliar a situação do aluno e chamar o responsável pela saúde da unidade.',
       'Verificar se há autorização dos pais/responsáveis para administrar medicamento.',
@@ -719,7 +729,7 @@ var POPS_DB = [
     nome: 'Avaliação Integral do Aluno',
     descricao: 'Define os critérios e processos da avaliação integral, considerando aspectos além da nota.',
     responsaveis: ['Coordenação Pedagógica', 'SOE', 'Professores'],
-    keywords: ['avaliação integral','desempenho aluno','comportamento avaliação','avaliação socioemocional','notas e comportamento','avaliação holística','integral aluno'],
+    keywords: ['avaliacao integral','desempenho aluno','comportamento avaliacao','avaliacao socioemocional','notas e comportamento','avaliacao holistica','integral aluno','avaliar aluno completo','conselho de classe','perfil aluno','avaliar desenvolvimento','visao geral aluno','avaliacao completa aluno'],
     solucao: [
       'Reunir informações de desempenho acadêmico e comportamental do aluno.',
       'Consultar os professores de cada disciplina sobre o perfil do aluno.',
@@ -734,7 +744,7 @@ var POPS_DB = [
     nome: 'Agendamento de Atendimento',
     descricao: 'Fluxo para agendamento de atendimentos entre equipe escolar, famílias e alunos.',
     responsaveis: ['Secretaria', 'Coordenação', 'SOE'],
-    keywords: ['agendamento','agenda','reunião','marcar atendimento','reunião família','reunião responsável','conversa marcada','horário atendimento','atender responsável','agendar'],
+    keywords: ['agendamento','agenda','reuniao','marcar atendimento','reuniao familia','reuniao responsavel','conversa marcada','horario atendimento','atender responsavel','agendar','marcar reuniao','quer marcar atendimento','precisamos conversar','reuniao com familia','agendar conversa','horario disponivel','marcar horario','precisa de atendimento','solicita reuniao'],
     solucao: [
       'Verificar a disponibilidade de horário do profissional responsável pelo atendimento.',
       'Registrar o agendamento no sistema com nome, contato e motivo.',
@@ -748,7 +758,7 @@ var POPS_DB = [
     nome: 'Plano Educacional Individualizado (PEI)',
     descricao: 'Define os procedimentos para elaboração e acompanhamento do PEI para alunos com necessidades especiais.',
     responsaveis: ['SOE', 'Coordenação Pedagógica', 'Professores', 'Equipe Multidisciplinar'],
-    keywords: ['PEI','plano educacional individualizado','inclusão','necessidade especial','laudo','diagnóstico','adaptação','deficiência','autismo','tdah','dislexia','adaptação curricular','necessidades especiais','aluno especial','público alvo educação especial'],
+    keywords: ['PEI','plano educacional individualizado','inclusao','necessidade especial','laudo','diagnostico','adaptacao','deficiencia','autismo','tdah','dislexia','adaptacao curricular','necessidades especiais','aluno especial','aluno com laudo','aluno autista','aluno com TDAH','laudo medico','educacao especial','aluno incluido','aluno com sindrome','aluno com deficiencia','necessidades educativas','adaptacao de prova','adequacao curricular'],
     solucao: [
       'Receber o laudo médico/psicológico e registrar na ficha do aluno.',
       'Convocar reunião com professores, família e equipe multidisciplinar.',
@@ -763,7 +773,7 @@ var POPS_DB = [
     nome: 'Cerimônia do Hino e Bandeira Nacional',
     descricao: 'Protocolo para realização da cerimônia cívica do hino e bandeira nacional.',
     responsaveis: ['Coordenação', 'Professores'],
-    keywords: ['hino','bandeira','cerimônia','cívico','civismo','hino nacional','cerimônia cívica','bandeira nacional'],
+    keywords: ['hino','bandeira','cerimonia','civico','civismo','hino nacional','cerimonia civica','bandeira nacional','organizar hino','hasteamento bandeira','dia civico','hastear bandeira','culto a bandeira','cerimonia do hino'],
     solucao: [
       'Organizar os alunos no pátio conforme a disposição padrão.',
       'Verificar o sistema de som com antecedência para a execução do hino.',
@@ -777,7 +787,7 @@ var POPS_DB = [
     nome: 'Dependência',
     descricao: 'Regulamenta o processo de dependência escolar para alunos com reprovação em matérias.',
     responsaveis: ['Secretaria', 'Coordenação Pedagógica', 'Professores'],
-    keywords: ['dependência','reprovação','matéria','disciplina reprovada','aluno reprovado','cursando dependência','aprovado com dependência','depende','dependência escolar'],
+    keywords: ['dependencia','reprovacao','materia reprovada','disciplina reprovada','aluno reprovado','cursando dependencia','aprovado com dependencia','dependencia escolar','aluno em dependencia','reprovou materia','cursando dep','materia pendente','precisa dep','foi reprovado','dependente em materia','aluno dependente'],
     solucao: [
       'Verificar no sistema as disciplinas em que o aluno está em dependência.',
       'Comunicar o aluno e os responsáveis formalmente sobre a situação.',
@@ -791,7 +801,7 @@ var POPS_DB = [
     nome: 'Alunos Ingressos ao Longo do Ano Letivo',
     descricao: 'Define o processo de matrícula e adaptação de novos alunos que ingressam fora do início do ano.',
     responsaveis: ['Secretaria', 'Coordenação'],
-    keywords: ['novo aluno','ingresso','matrícula','entrou no meio do ano','chegou agora','novo estudante','matrícula nova','transferência entrada','incorporação aluno','aluno novo','chegou tarde no ano'],
+    keywords: ['novo aluno','ingresso','matricula','entrou no meio do ano','chegou agora','novo estudante','matricula nova','transferencia entrada','aluno novo','aluno chegando','nova matricula','acabou de entrar','primeiro dia','aluno novo na escola','acabou de se matricular','entrou essa semana','veio de outra escola','aluno ingressou','aluno recebido','receber aluno novo'],
     solucao: [
       'Receber a documentação completa do aluno para abertura do processo de matrícula.',
       'Verificar a vaga disponível na turma adequada para o aluno.',
@@ -807,7 +817,7 @@ var POPS_DB = [
     nome: 'Alunos Cancelados',
     descricao: 'Procedimento para cancelamento formal de matrícula de alunos.',
     responsaveis: ['Secretaria', 'Coordenação', 'Direção'],
-    keywords: ['cancelamento','cancelar','desistência','desistente','aluno cancelou','saiu da escola','trancamento','trancou matrícula','aluno saiu','não voltou','abandonou'],
+    keywords: ['cancelamento','cancelar','desistencia','desistente','aluno cancelou','saiu da escola','trancamento','trancou matricula','aluno saiu','nao voltou','abandonou','aluno vai sair da escola','vai desistir','quer cancelar matricula','nao quer mais estudar','desistiu','aluno parou de vir','familia quer retirar','trancou','abandonou escola','deixou de vir','nao aparece mais'],
     solucao: [
       'Verificar o motivo do cancelamento junto ao responsável.',
       'Tentar contato de retenção antes de formalizar o cancelamento.',
@@ -822,7 +832,7 @@ var POPS_DB = [
     nome: 'Alunos Transferidos Entre Unidades do Matriz',
     descricao: 'Define o fluxo de transferência de alunos entre as unidades da rede Matriz.',
     responsaveis: ['Secretaria', 'Coordenação', 'Direção'],
-    keywords: ['transferência','transferir','mudança de unidade','outra unidade','aluno transferido','mudar de escola','matriz outra unidade','transferência interna'],
+    keywords: ['transferencia','transferir','mudanca de unidade','outra unidade','aluno transferido','mudar de escola','matriz outra unidade','transferencia interna','quer ir para outra unidade','transferir para outra escola','aluno quer se transferir','mudou de bairro','mais perto de casa','solicitou transferencia','pedir transferencia'],
     solucao: [
       'Receber a solicitação de transferência da família com o motivo.',
       'Verificar disponibilidade de vaga na unidade de destino.',
@@ -837,7 +847,7 @@ var POPS_DB = [
     nome: 'Conselho Tutelar — Excesso de Faltas',
     descricao: 'Define quando e como comunicar o Conselho Tutelar sobre excesso de faltas de aluno.',
     responsaveis: ['Coordenação', 'Direção', 'SOE'],
-    keywords: ['conselho tutelar','excesso de faltas','muitas faltas','faltas repetidas','falta acumulada','notificar conselho','proteção criança','faltas injustificadas','aluno faltando muito','evasão escolar'],
+    keywords: ['conselho tutelar','excesso de faltas','muitas faltas','faltas repetidas','falta acumulada','notificar conselho','protecao crianca','faltas injustificadas','aluno faltando muito','evasao escolar','aluno sumiu','nao aparece ha dias','falta desde semana','muitas faltas injustificadas','nao vem a escola','falta excessiva','acima de 25 por cento','evasao','comunicar conselho','aluno evadiu','aluno desapareceu','nao veio mais','faltas demais'],
     solucao: [
       'Verificar o total de faltas do aluno no sistema — acima de 25% é considerado excesso.',
       'Tentar contato com a família por todos os meios disponíveis (telefone, Layers, carta).',
@@ -853,7 +863,7 @@ var POPS_DB = [
     nome: 'Conselho Tutelar — Intolerância e/ou Assédio',
     descricao: 'Protocolo para denúncia ao Conselho Tutelar em casos de intolerância, discriminação ou assédio.',
     responsaveis: ['Direção', 'SOE', 'Coordenação'],
-    keywords: ['intolerância','assédio','discriminação','preconceito','conselho tutelar','violência escolar','racismo','homofobia','xenofobia','denúncia','violência','abuso','maus tratos','denunciar'],
+    keywords: ['intolerancia','assedio','discriminacao','preconceito','conselho tutelar','violencia escolar','racismo','homofobia','xenofobia','denuncia','violencia','abuso','maus tratos','denunciar','sofreu assedio','foi assediado','marcas no corpo','suspeita de abuso','relato de violencia','abuso domestico','violencia em casa','crianca em risco','menor em risco','violencia familiar','maus-tratos','vitima de agressao','situacao de risco','crianca sofrendo'],
     solucao: [
       'Acolher a vítima em ambiente seguro e confidencial.',
       'Ouvir o relato sem questionamentos que possam revitimizar.',
@@ -870,7 +880,7 @@ var POPS_DB = [
     nome: 'Autodeclaração — Educação Física',
     descricao: 'Orienta o processo de autodeclaração para dispensa ou adaptação nas aulas de Educação Física.',
     responsaveis: ['Coordenação', 'Professor de Ed. Física', 'Secretaria'],
-    keywords: ['educação física','dispensa ed física','atestado','laudo ed física','não faz ed física','dispensa aula','declaração responsável ed física','atividade física','aluno dispensado'],
+    keywords: ['educacao fisica','dispensa ed fisica','atestado','laudo ed fisica','nao faz ed fisica','dispensa aula','declaracao responsavel ed fisica','atividade fisica','aluno dispensado','nao faz educacao fisica','dispensado de educacao fisica','atestado para ed fisica','aluno nao pode fazer ef','problema de saude ef','aluno isento de ef','declaracao educacao fisica'],
     solucao: [
       'Verificar se o aluno possui atestado médico ou declaração dos pais para dispensa.',
       'Registrar a autodeclaração no sistema e na ficha do aluno.',
@@ -884,7 +894,7 @@ var POPS_DB = [
     nome: 'Declarações por Responsáveis via Layers',
     descricao: 'Orienta como processar declarações e autorizações enviadas pelos responsáveis pelo aplicativo Layers.',
     responsaveis: ['Coordenação', 'Secretaria'],
-    keywords: ['declaração layers','autorização layers','responsável enviou layers','layers autorização','comunicado layers','declaração digital','autorização digital','declaração responsável'],
+    keywords: ['declaracao layers','autorizacao layers','responsavel enviou layers','layers autorizacao','comunicado layers','declaracao digital','autorizacao digital','declaracao responsavel','declaracao chegou pelo app','autorizacao pelo app','responsavel mandou mensagem','declaracao digital recebida','mensagem de responsavel','responsavel enviou declaracao','recebeu autorizacao layers'],
     solucao: [
       'Acessar o painel do Layers para visualizar as declarações recebidas.',
       'Verificar a autenticidade e completude da declaração recebida.',
@@ -898,7 +908,7 @@ var POPS_DB = [
     nome: 'Orientação sobre Formas de Assédio',
     descricao: 'Material de orientação sobre identificação e combate ao assédio no ambiente escolar.',
     responsaveis: ['SOE', 'Direção', 'Todos os Colaboradores'],
-    keywords: ['assédio','assédio sexual','assédio moral','bullying','cyberbullying','violência psicológica','abuso','intimidação','ameaça','humilhação','coação','vítima assédio','formas de assédio','proteger aluno'],
+    keywords: ['assedio','assedio sexual','assedio moral','bullying','cyberbullying','violencia psicologica','abuso','intimidacao','ameaca','humilhacao','coacao','vitima assedio','formas de assedio','proteger aluno','aluno sendo humilhado','vitima de bullying','esta sofrendo','colega xingando','colega bateu','apelidando','zoando','tirando sarro','excluindo aluno','perseguicao','intimidando','ameacando colega','pressao psicologica','sofre bullying','bullying escolar'],
     solucao: [
       'Identificar os sinais de assédio: isolamento, tristeza, queda de desempenho, marcas físicas.',
       'Acolher imediatamente o aluno/funcionário vítima.',
@@ -913,7 +923,7 @@ var POPS_DB = [
     nome: 'Classificação / Reclassificação',
     descricao: 'Procedimentos para classificar ou reclassificar alunos de turma ou série.',
     responsaveis: ['Coordenação Pedagógica', 'Secretaria', 'Direção'],
-    keywords: ['classificação','reclassificação','mudar turma','mudar série','avançar série','nível aluno','turma adequada','avaliação classificatória','progressão','avançar'],
+    keywords: ['classificacao','reclassificacao','mudar turma','mudar serie','avancar serie','nivel aluno','turma adequada','avaliacao classificatoria','progressao','avancar','aluno avancado demais','mudar de serie','avaliacao de nivelamento','nivel errado','turma errada para aluno','aluno muito avancado'],
     solucao: [
       'Receber a solicitação de classificação/reclassificação da família ou proposta pedagógica.',
       'Aplicar avaliação classificatória nas disciplinas relevantes.',
@@ -928,7 +938,7 @@ var POPS_DB = [
     nome: 'Declaração para Docentes ou Estagiários',
     descricao: 'Processo de solicitação e emissão de declarações para professores e estagiários.',
     responsaveis: ['Secretaria', 'RH', 'Direção'],
-    keywords: ['declaração professor','declaração estagiário','documento professor','declaração de vínculo','comprovante docente','declaração de trabalho','certidão','documento trabalho'],
+    keywords: ['declaracao professor','declaracao estagiario','documento professor','declaracao de vinculo','comprovante docente','declaracao de trabalho','certidao','documento trabalho','professor quer declaracao','estagiario precisa documento','comprovante de trabalho','precisa declaracao escola','documento para docente','declaracao de vaga'],
     solucao: [
       'Receber a solicitação formal do docente/estagiário com especificação do tipo de declaração.',
       'Verificar o prazo para emissão (geralmente 3 a 5 dias úteis).',
@@ -942,7 +952,7 @@ var POPS_DB = [
     nome: 'Uso do Nome Social',
     descricao: 'Define como tratar e registrar o uso do nome social por alunos e funcionários.',
     responsaveis: ['Secretaria', 'Coordenação', 'Todos os Colaboradores'],
-    keywords: ['nome social','identidade de gênero','lgbtq','transgênero','trans','não binário','respeito identidade','gênero','diversidade','inclusão social','chamar pelo nome','nome preferido'],
+    keywords: ['nome social','identidade de genero','lgbtq','transgenero','trans','nao binario','respeito identidade','genero','diversidade','inclusao social','chamar pelo nome','nome preferido','quer ser chamado por outro nome','nao gosta do nome','aluno trans','identidade de genero','chamar por apelido','prefere nome diferente','registrar outro nome','aluno nao binario','questao de genero'],
     solucao: [
       'Registrar o nome social no sistema mediante solicitação do aluno/responsável.',
       'Comunicar todos os professores e colaboradores sobre o uso do nome social.',
@@ -957,7 +967,7 @@ var POPS_DB = [
     nome: 'RDI — Relatório de Desenvolvimento Individual',
     descricao: 'Procedimentos para elaboração e acompanhamento do Relatório de Desenvolvimento Individual.',
     responsaveis: ['SOE', 'Coordenação Pedagógica', 'Professores'],
-    keywords: ['RDI','relatório desenvolvimento','relatório individual','inclusão RDI','acompanhamento desenvolvimento','progresso aluno inclusão','desenvolvimento aluno especial'],
+    keywords: ['RDI','relatorio desenvolvimento','relatorio individual','inclusao RDI','acompanhamento desenvolvimento','progresso aluno inclusao','desenvolvimento aluno especial','relatorio do aluno especial','acompanhamento aluno especial','progresso aluno inclusao','relatorio desenvolvimento individual','rdg aluno','relatorio inclusao'],
     solucao: [
       'Identificar os alunos que precisam de RDI (com necessidades especiais ou em acompanhamento).',
       'Reunir informações de todos os professores sobre o aluno.',
@@ -971,7 +981,7 @@ var POPS_DB = [
     nome: 'Projetos — SOE',
     descricao: 'Define os procedimentos para desenvolvimento e acompanhamento de projetos do SOE.',
     responsaveis: ['SOE', 'Coordenação'],
-    keywords: ['projetos SOE','orientação educacional','projeto escolar','projeto social','ação SOE','intervenção SOE','projeto turma'],
+    keywords: ['projetos SOE','orientacao educacional','projeto escolar','projeto social','acao SOE','intervencao SOE','projeto turma','projeto de intervencao','acao do SOE','projeto para turma','projeto de prevencao','acao preventiva','programa de apoio','projeto soe turma','intervencao educacional'],
     solucao: [
       'Identificar a demanda que originou o projeto (prevenção, intervenção, promoção).',
       'Elaborar o plano de ação com objetivos, público-alvo, cronograma e recursos.',
@@ -985,7 +995,7 @@ var POPS_DB = [
     nome: 'Visita às Unidades',
     descricao: 'Protocolo para visitas institucionais e inspeções pedagógicas entre unidades.',
     responsaveis: ['Direção', 'Coordenação Regional'],
-    keywords: ['visita unidade','inspeção','supervisão','visita gestão','visita pedagógica','visita institucional','supervisão escolar','visita diretoria'],
+    keywords: ['visita unidade','inspecao','supervisao','visita gestao','visita pedagogica','visita institucional','supervisao escolar','visita diretoria','coordenador vai visitar','diretoria vai vir','visita supervisao','inspecao escolar','supervisao pedagogica','visita gestora','vistoria escolar'],
     solucao: [
       'Comunicar a unidade com antecedência sobre a visita.',
       'Preparar os documentos e relatórios de gestão para apresentação.',
@@ -999,7 +1009,7 @@ var POPS_DB = [
     nome: 'Atendimento SOE — Responsáveis, Alunos e Equipe Multidisciplinar',
     descricao: 'Fluxo de atendimento do SOE envolvendo responsáveis, alunos e equipe multidisciplinar.',
     responsaveis: ['SOE', 'Psicólogo', 'Assistente Social'],
-    keywords: ['SOE atendimento','atendimento psicológico','saúde mental aluno','ansiedade aluno','depressão aluno','crise emocional','acompanhamento familiar','equipe multidisciplinar','psicólogo','assistente social','família em crise','responsável em crise','aluno em crise'],
+    keywords: ['SOE atendimento','atendimento psicologico','saude mental aluno','ansiedade aluno','depressao aluno','crise emocional','acompanhamento familiar','equipe multidisciplinar','psicologo','assistente social','familia em crise','responsavel em crise','aluno em crise','aluno com problema emocional','aluno muito triste','aluno chorando sem parar','crise de ansiedade','aluno em sofrimento','aluno se machucando','automutilacao','aluno falou em morte','situacao delicada','precisa de psicologo','acompanhamento psicologico','ideacao suicida','sofrimento emocional'],
     solucao: [
       'Acolher o aluno/responsável em sala privativa do SOE.',
       'Ouvir o relato completo sem interrupções.',
@@ -1015,7 +1025,7 @@ var POPS_DB = [
     nome: 'SOE — Serviço de Orientação Educacional',
     descricao: 'Normas gerais e procedimentos do SOE na unidade escolar.',
     responsaveis: ['SOE'],
-    keywords: ['SOE','orientação educacional','serviço orientação','orientador','socioemocional','acompanhamento aluno','suporte emocional'],
+    keywords: ['SOE','orientacao educacional','servico orientacao','orientador','socioemocional','acompanhamento aluno','suporte emocional','encaminhar SOE','caso para SOE','orientacao SOE','problema socioafetivo','acompanhamento soe','precisa de orientacao educacional','suporte socioemocional','encaminhar para soe'],
     solucao: [
       'Encaminhar o caso ao SOE com histórico documentado.',
       'O SOE realizará triagem e definirá o tipo de atendimento necessário.',
@@ -1029,7 +1039,7 @@ var POPS_DB = [
     nome: 'Protocolo de Acidentados',
     descricao: 'Define os procedimentos emergenciais para atendimento de alunos e funcionários acidentados.',
     responsaveis: ['Todos', 'Coordenação', 'Direção'],
-    keywords: ['acidente','acidentado','machucado','queda','ferimento','emergência','socorro','sangue','fratura','desmaio','convulsão','engasgado','intoxicação','acidente grave','urgência','ambulância','SAMU'],
+    keywords: ['acidente','acidentado','machucado','queda','ferimento','emergencia','socorro','sangue','fratura','desmaio','convulsao','engasgado','intoxicacao','acidente grave','urgencia','ambulancia','SAMU','se machucou','caiu','bateu a cabeca','cortou','quebrou o braco','torceu o pe','sangramento','esta sangrando','precisa de socorro','queda na escola','bateu na cabeca','acidente no recreio','urgente','aluno caiu','lesao','fraturou','machucou o braco','machucou a perna'],
     solucao: [
       '🚨 MANTENHA A CALMA e proteja a cena do acidente.',
       'Verificar o estado do acidentado: está consciente? Está respirando?',
@@ -1046,7 +1056,7 @@ var POPS_DB = [
     nome: 'EFAI — Acompanhamento da Prática Pedagógica',
     descricao: 'Procedimentos do EFAI para acompanhamento e avaliação da prática pedagógica dos professores.',
     responsaveis: ['Coordenação Pedagógica', 'EFAI'],
-    keywords: ['EFAI','prática pedagógica','observação aula','avaliação professor','visita sala','feedback professor','desempenho pedagógico','qualidade ensino'],
+    keywords: ['EFAI','pratica pedagogica','observacao aula','avaliacao professor','visita sala','feedback professor','desempenho pedagogico','qualidade ensino','observacao de aula','acompanhar professor na aula','feedback para professor','avaliacao da aula','visita sala de aula','avaliar professor','acompanhamento EFAI','observar aula'],
     solucao: [
       'Agendar a observação de aula com antecedência ou realizar visita não anunciada.',
       'Preencher o formulário EFAI de observação durante a visita.',
@@ -1061,7 +1071,7 @@ var POPS_DB = [
     nome: 'EFAI — Diário de Classe e Controle de Notas',
     descricao: 'Normas para lançamento e controle do diário de classe e registro de notas.',
     responsaveis: ['Professores', 'Coordenação Pedagógica', 'EFAI'],
-    keywords: ['diário de classe','lançamento nota','controle nota','frequência diário','nota não lançada','diário atrasado','notas erradas','correção nota','diário professor'],
+    keywords: ['diario de classe','lancamento nota','controle nota','frequencia diario','nota nao lancada','diario atrasado','notas erradas','correcao nota','diario professor','diario nao atualizado','professor nao lancou nota','nota atrasada','frequencia nao lancada','diario com erro','nota errada no sistema','precisa corrigir nota','lancamento atrasado','frequencia errada','diario incompleto'],
     solucao: [
       'Verificar se todos os professores estão lançando o diário de acordo com o prazo.',
       'Identificar notas não lançadas ou com prazo vencido e comunicar ao professor.',
@@ -1075,7 +1085,7 @@ var POPS_DB = [
     nome: 'EFAI — Utilização de Fundo Fixo',
     descricao: 'Normas para utilização, prestação de contas e controle do fundo fixo da unidade.',
     responsaveis: ['Direção', 'Financeiro', 'Coordenação'],
-    keywords: ['fundo fixo','financeiro','recurso','compra','nota fiscal','prestação de contas','reembolso','gasto','despesa','material escola'],
+    keywords: ['fundo fixo','financeiro','recurso','compra','nota fiscal','prestacao de contas','reembolso','gasto','despesa','material escola','precisa comprar material','recurso financeiro','gasto da escola','compra para escola','despesa escolar','reembolso material','solicitacao compra','material escolar','verba escola'],
     solucao: [
       'Identificar a necessidade e verificar se pode ser atendida pelo fundo fixo.',
       'Solicitar autorização da direção antes de realizar o gasto.',
@@ -1089,7 +1099,7 @@ var POPS_DB = [
     nome: 'Uso do Celular na Escola — Lei 15.100/2025',
     descricao: 'Define as regras de uso (ou proibição) do celular na escola conforme a nova legislação.',
     responsaveis: ['Coordenação', 'Professores', 'Portaria'],
-    keywords: ['celular','telefone celular','smartphone','aparelho eletrônico','uso celular','proibir celular','lei celular','celular sala de aula','confiscar celular','aluno celular','aparelho celular'],
+    keywords: ['celular','telefone celular','smartphone','aparelho eletronico','uso celular','proibir celular','lei celular','celular sala de aula','confiscar celular','aluno celular','aparelho celular','aluno com celular','usando celular em aula','tirou foto sem permissao','gravando aula','filmando colega','celular em sala','nao quer guardar celular','recolher celular','pegar celular aluno','celular proibido','aluno filmando','celular do aluno','aluno usando celular'],
     solucao: [
       'Verificar se o uso do celular ocorreu em situação proibida pela Lei 15.100/2025.',
       'Orientar o aluno sobre a legislação e as regras da escola de forma educativa.',
@@ -1104,7 +1114,7 @@ var POPS_DB = [
     nome: 'Uniformes',
     descricao: 'Define as normas de uso obrigatório do uniforme escolar e procedimentos para irregularidades.',
     responsaveis: ['Coordenação', 'Portaria'],
-    keywords: ['uniforme','farda','roupa','sem uniforme','vestimenta','aluno sem uniforme','uniforme incompleto','irregularidade uniforme','traje'],
+    keywords: ['uniforme','farda','roupa','sem uniforme','vestimenta','aluno sem uniforme','uniforme incompleto','irregularidade uniforme','traje','aluno sem farda','nao esta fardado','veio sem uniforme','roupa errada','fardamento incompleto','esta de roupa comum','sem camiseta escola','nao tem uniforme','aluno fora do uniforme','viu aluno sem farda'],
     solucao: [
       'Abordar o aluno sem uniforme na entrada ou ao ser identificado na escola.',
       'Verificar se é situação eventual (esqueceu) ou recorrente.',
@@ -1119,7 +1129,7 @@ var POPS_DB = [
     nome: 'Avaliação de Desempenho da Coordenação',
     descricao: 'Define os critérios e processo de avaliação de desempenho da equipe de coordenação.',
     responsaveis: ['Direção', 'RH', 'Gestão Regional'],
-    keywords: ['avaliação coordenação','desempenho coordenação','avaliação gestão','meta coordenação','indicador desempenho','performance coordenação'],
+    keywords: ['avaliacao coordenacao','desempenho coordenacao','avaliacao gestao','meta coordenacao','indicador desempenho','performance coordenacao','avaliacao de desempenho','meta da coordenacao','indicadores gestao','resultado coordenador','avaliar coordenacao'],
     solucao: [
       'Reunir os indicadores de desempenho do período a ser avaliado.',
       'Preencher o formulário de autoavaliação conforme modelo 2025.',
@@ -1158,20 +1168,25 @@ function normalizar(texto) {
 function calcularRelevancia(pop, textoNorm) {
   var score = 0;
   var razoes = [];
+  var jaContou = {};
+
+  // 1. Correspondencia de frases completas (maior peso)
   pop.keywords.forEach(function(kw) {
     var kwNorm = normalizar(kw);
     if (textoNorm.indexOf(kwNorm) !== -1) {
-      var peso = kw.length > 8 ? 3 : kw.length > 4 ? 2 : 1;
+      var peso = kwNorm.length > 12 ? 5 : kwNorm.length > 8 ? 4 : kwNorm.length > 5 ? 3 : kwNorm.length > 3 ? 2 : 1;
       score += peso;
       razoes.push(kw);
+      kwNorm.split(/\s+/).forEach(function(w){ jaContou[w] = true; });
     }
   });
-  // Bônus por nome do POP
+
+  // 2. Bonus por palavras do nome do POP encontradas no texto
   var nomeNorm = normalizar(pop.nome);
-  var palavrasNome = nomeNorm.split(/\s+/).filter(function(w){ return w.length > 3; });
-  palavrasNome.forEach(function(w) {
-    if (textoNorm.indexOf(w) !== -1) { score += 2; }
+  nomeNorm.split(/\s+/).filter(function(w){ return w.length > 5; }).forEach(function(w) {
+    if (textoNorm.indexOf(w) !== -1 && !jaContou[w]) { score += 2; jaContou[w] = true; }
   });
+
   return { score: score, razoes: razoes.slice(0, 4) };
 }
 
@@ -1195,11 +1210,16 @@ function analisar() {
     var resultados = POPS_DB.map(function(pop) {
       var r = calcularRelevancia(pop, textoNorm);
       return { pop: pop, score: r.score, razoes: r.razoes };
-    }).filter(function(r) { return r.score > 0; });
+    }).filter(function(r) { return r.score >= 2; });
 
     // Ordenar por relevância
     resultados.sort(function(a, b) { return b.score - a.score; });
-    resultados = resultados.slice(0, 6);
+    resultados = resultados.slice(0, 2);
+    // Descartar resultados com menos de 35% da pontuação do melhor resultado (evita sugestões irrelevantes)
+    if (resultados.length > 0) {
+      var topScore = resultados[0].score;
+      resultados = resultados.filter(function(r) { return r.score >= topScore * 0.20; });
+    }
 
     // Calcular % relativa
     var maxScore = resultados.length > 0 ? resultados[0].score : 1;
@@ -1269,7 +1289,7 @@ function renderResultados(resultados, query) {
     html += '<div style="margin-bottom:1rem;"><div style="font-size:12px;font-family:var(--font-mono);color:var(--text3);font-weight:600;margin-bottom:6px;letter-spacing:1px;">RESPONSÁVEIS:</div>';
     html += '<div class="resps-row">'+respsHtml+'</div></div>';
     // PDF
-    html += '<a class="pdf-btn" href="'+encodeURI(pop.arquivo)+'" target="_blank" rel="noopener">📄 Abrir PDF Completo — '+pop.nome+'</a>';
+    html += '<a class="pdf-btn" href="'+encodeURI(pop.arquivo)+'"  onclick="event.preventDefault();window.location.href=this.href;">📄 Abrir PDF Completo — '+pop.nome+'</a>';
     html += '</div></div>';
     html += '</div>';
   });
@@ -1325,7 +1345,7 @@ function buildPopsGrid() {
     div.setAttribute('data-nome', normalizar(pop.nome));
     div.setAttribute('data-num', pop.num);
     div.innerHTML = '<span class="pop-mini-num">POP '+pop.num+'</span><span class="pop-mini-name">'+pop.nome+'</span>';
-    div.onclick = function() { window.open(encodeURI(pop.arquivo), '_blank'); };
+    div.onclick = function() { window.location.href = encodeURI(pop.arquivo); };
     grid.appendChild(div);
   });
 }
@@ -1335,7 +1355,7 @@ function filtrarMinis() {
   document.querySelectorAll('.pop-mini-card').forEach(function(card) {
     var nome = card.getAttribute('data-nome');
     var num = card.getAttribute('data-num');
-    var show = !q || nome.indexOf(q) !== -1 || ('pop '+num).indexOf(q) !== -1 || num.indexOf(q) !== -1;
+    var show = !q || nome.indexOf(q) !== -1 || ('pop '+num).indexOf(q) !== -1 || num.indexOf(q) !== -1 || 'politica salvaguarda'.indexOf(q) !== -1;
     card.style.display = show ? '' : 'none';
   });
 }
@@ -1346,6 +1366,18 @@ document.getElementById('search-input').addEventListener('keydown', function(e) 
 });
 
 buildPopsGrid();
+
+// Card Política de Salvaguarda
+(function() {
+  var grid = document.getElementById('pops-grid');
+  var div = document.createElement('div');
+  div.className = 'pop-mini-card pop-mini-card--policy';
+  div.setAttribute('data-nome', 'politica de salvaguarda');
+  div.setAttribute('data-num', 'PS');
+  div.innerHTML = '<span class="pop-mini-num">&#128195; Política</span><span class="pop-mini-name">Política de Salvaguarda</span>';
+  div.onclick = function() { window.open('https://drive.google.com/file/d/1XhR3Y1Vl369pRIghHWpvebnI7dHswGY-/view', '_blank'); };
+  grid.appendChild(div);
+})();
 </script>
 </body>
 </html>
