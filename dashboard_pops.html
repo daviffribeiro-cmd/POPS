@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Central de POPs — Matriz Educação</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f0f7f3; --bg2: #ffffff; --bg3: #e8f5ee; --bg4: #d0eadb;
+  --green: #0e7a40; --green2: #12a356; --green3: #e2f5ea; --green4: #a8dbb8;
+  --green-dark: #064d27; --green-mid: #0f5c30;
+  --lime: #4caf7d; --lime2: #6fcf97;
+  --teal: #0d9e72;
+  --gold: #b8860b; --gold2: #d4a017; --goldbg: #fef9ec;
+  --red: #c0392b; --redbg: #fdf0ee;
+  --text: #0a1f12; --text2: #2d5040; --text3: #6a9070;
+  --border: rgba(14,122,64,0.10); --border2: rgba(14,122,64,0.20);
+  --radius: 16px; --radius-sm: 10px; --radius-lg: 22px;
+  --shadow: 0 2px 14px rgba(14,122,64,0.09); --shadow-md: 0 6px 28px rgba(14,122,64,0.14); --shadow-lg: 0 12px 48px rgba(14,122,64,0.18);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); min-height: 100vh; }
+
+/* ===== HEADER ===== */
+.header {
+  background: linear-gradient(135deg, #064d27 0%, #0a6b35 35%, #0e7a40 65%, #0f5c30 100%);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(76,175,125,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 80% at 10% 20%, rgba(255,255,255,0.06) 0%, transparent 60%);
+}
+.header::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--lime), var(--lime2), var(--lime), transparent);
+  opacity: 0.7;
+}
+/* Orbs decorativos */
+.header-orb1 { position: absolute; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(76,175,125,0.22) 0%, transparent 70%); top: -120px; right: -60px; pointer-events: none; }
+.header-orb2 { position: absolute; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); bottom: -60px; left: 200px; pointer-events: none; }
+
+.header-inner {
+  position: relative; z-index: 1;
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; flex-wrap: wrap;
+  padding: 1.75rem 2rem;
+}
+.header-brand { display: flex; align-items: center; gap: 18px; }
+.brand-emblem {
+  width: 68px; height: 68px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.35));
+}
+.brand-emblem img { width: 100%; height: 100%; object-fit: contain; }
+.brand-text-block { display: flex; flex-direction: column; gap: 3px; }
+.brand-name {
+  font-family: var(--font-display); font-size: 32px; letter-spacing: 3px; color: #fff; line-height: 1;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.brand-sub {
+  font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 2px;
+  font-family: var(--font-mono); text-transform: uppercase;
+}
+.brand-divider {
+  width: 1px; height: 52px; background: rgba(255,255,255,0.2);
+  margin: 0 4px; flex-shrink: 0;
+}
+.brand-tagline {
+  font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5;
+  max-width: 200px;
+}
+.brand-tagline strong { color: #fff; font-weight: 700; }
+
+.header-right { display: flex; align-items: center; gap: 1.75rem; }
+.header-stats { display: flex; gap: 1.5rem; }
+.h-stat {
+  text-align: center;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 10px 20px;
+  backdrop-filter: blur(8px);
+}
+.h-stat-val { font-family: var(--font-display); font-size: 32px; color: #fff; line-height: 1; }
+.h-stat-lbl { font-size: 10px; color: rgba(255,255,255,0.55); font-family: var(--font-mono); letter-spacing: 1.5px; margin-top: 2px; }
+
+/* ===== MAIN ===== */
+.main { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+/* ===== SEARCH SECTION ===== */
+.search-section {
+  background: var(--bg2);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 2rem;
+  border: 1.5px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.search-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--green-dark), var(--green), var(--lime), var(--green), var(--green-dark));
+}
+.search-label {
+  font-family: var(--font-display); font-size: 24px; letter-spacing: 1.5px;
+  color: var(--text); margin-bottom: 5px;
+  display: flex; align-items: center; gap: 10px;
+}
+.search-label-icon {
+  width: 32px; height: 32px; background: linear-gradient(135deg, var(--green), var(--lime));
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.search-sub { font-size: 13px; color: var(--text3); margin-bottom: 1.25rem; line-height: 1.65; }
+.search-area {
+  width: 100%; background: var(--bg3);
+  border: 1.5px solid var(--border2);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px; font-family: var(--font-body); font-size: 15px;
+  color: var(--text); outline: none; resize: vertical; min-height: 120px;
+  transition: all 0.2s; line-height: 1.7;
+}
+.search-area:focus {
+  border-color: var(--green); background: #fff;
+  box-shadow: 0 0 0 3px rgba(14,122,64,0.1);
+}
+.search-area::placeholder { color: var(--text3); }
+.search-actions { display: flex; gap: 10px; margin-top: 1.25rem; align-items: center; flex-wrap: wrap; }
+.btn-analisar {
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 60%, var(--teal) 100%);
+  color: #fff; border: none; border-radius: var(--radius-sm);
+  padding: 13px 32px; font-family: var(--font-display); font-size: 19px;
+  letter-spacing: 2px; cursor: pointer; transition: all 0.2s;
+  box-shadow: 0 4px 18px rgba(14,122,64,0.4);
+  display: flex; align-items: center; gap: 8px;
+}
+.btn-analisar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(14,122,64,0.5);
+  background: linear-gradient(135deg, var(--green) 0%, var(--lime) 100%);
+}
+.btn-limpar {
+  background: transparent; color: var(--text3);
+  border: 1.5px solid var(--border2); border-radius: var(--radius-sm);
+  padding: 11px 20px; font-family: var(--font-body); font-size: 14px;
+  cursor: pointer; transition: all 0.15s;
+}
+.btn-limpar:hover { color: var(--text); border-color: var(--green4); background: var(--bg3); }
+.search-tip { font-size: 11px; color: var(--text3); font-family: var(--font-mono); margin-left: auto; }
+
+/* ===== EXAMPLES ===== */
+.examples-row { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 1.1rem; }
+.example-chip {
+  background: var(--bg3); border: 1px solid var(--green4);
+  border-radius: 20px; padding: 5px 14px; font-size: 12px;
+  color: var(--green-mid); cursor: pointer; transition: all 0.15s; font-weight: 600;
+}
+.example-chip:hover {
+  background: var(--green); color: #fff;
+  border-color: var(--green); transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(14,122,64,0.25);
+}
+
+/* ===== ANALYZING INDICATOR ===== */
+.analyzing {
+  display: none; align-items: center; gap: 12px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, var(--green3), #f0faf5);
+  border-radius: var(--radius-sm); margin-bottom: 1.5rem;
+  border: 1px solid var(--green4);
+}
+.analyzing.show { display: flex; }
+.analyzing-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); animation: blink 1s infinite; }
+.analyzing-dot:nth-child(2) { animation-delay: 0.2s; background: var(--lime); }
+.analyzing-dot:nth-child(3) { animation-delay: 0.4s; background: var(--teal); }
+@keyframes blink { 0%,80%,100%{opacity:0.2;transform:scale(0.8)} 40%{opacity:1;transform:scale(1.2)} }
+.analyzing-msg { font-size: 13px; color: var(--green-mid); font-family: var(--font-mono); font-weight: 600; }
+
+/* ===== RESULTS ===== */
+.results-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 8px; }
+.results-title { font-family: var(--font-display); font-size: 24px; letter-spacing: 0.5px; color: var(--text); }
+.results-badge {
+  font-size: 12px; font-family: var(--font-mono);
+  background: linear-gradient(135deg, var(--green), var(--teal));
+  color: #fff; padding: 5px 14px; border-radius: 20px; font-weight: 700;
+  box-shadow: 0 2px 8px rgba(14,122,64,0.3);
+}
+.no-results { text-align: center; padding: 3rem; color: var(--text3); }
+.no-results-icon { font-size: 52px; margin-bottom: 12px; }
+
+/* ===== POP CARD ===== */
+.pop-card {
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: all 0.2s;
+  position: relative;
+}
+.pop-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  border-radius: 16px 0 0 16px;
+}
+.pop-card.primary::before { background: linear-gradient(180deg, var(--green), var(--lime)); }
+.pop-card.secondary::before { background: linear-gradient(180deg, var(--teal), var(--green4)); }
+.pop-card.tertiary::before { background: var(--bg4); }
+.pop-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.pop-card.primary { border-color: var(--green4); }
+.pop-card.secondary { border-color: rgba(13,158,114,0.2); }
+
+.pop-card-hdr { display: flex; align-items: center; gap: 14px; padding: 1.25rem 1.25rem 1.25rem 1.5rem; cursor: pointer; }
+.pop-rank-badge {
+  flex-shrink: 0; width: 46px; height: 46px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 16px; font-weight: 700;
+}
+.rank-primary { background: linear-gradient(135deg, var(--green-dark), var(--green)); color: #fff; box-shadow: 0 3px 10px rgba(14,122,64,0.35); }
+.rank-secondary { background: linear-gradient(135deg, rgba(13,158,114,0.15), rgba(13,158,114,0.25)); color: var(--teal); border: 1.5px solid rgba(13,158,114,0.3); }
+.rank-tertiary { background: var(--bg3); color: var(--text3); border: 1.5px solid var(--border2); }
+.pop-hdr-info { flex: 1; min-width: 0; }
+.pop-num { font-size: 10px; font-family: var(--font-mono); color: var(--text3); letter-spacing: 2px; font-weight: 600; text-transform: uppercase; }
+.pop-name { font-size: 15px; font-weight: 700; color: var(--text); margin-top: 2px; }
+.pop-match-reason { font-size: 12px; color: var(--text3); margin-top: 3px; line-height: 1.5; }
+.pop-hdr-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.relevance-bar-wrap { display: flex; align-items: center; gap: 7px; }
+.relevance-bar-track { width: 80px; height: 7px; background: var(--bg4); border-radius: 7px; overflow: hidden; }
+.relevance-bar-fill { height: 100%; border-radius: 7px; transition: width 0.8s cubic-bezier(.4,0,.2,1); }
+.relevance-pct { font-size: 12px; font-family: var(--font-mono); font-weight: 700; }
+.pop-expand-btn { font-size: 16px; color: var(--text3); transition: transform 0.25s; width: 28px; height: 28px; border-radius: 50%; background: var(--bg3); display: flex; align-items: center; justify-content: center; }
+.pop-expand-btn.open { transform: rotate(180deg); background: var(--green3); color: var(--green); }
+
+.pop-card-body { display: none; border-top: 1px solid var(--border); background: linear-gradient(180deg, #fafffe, var(--bg2)); }
+.pop-card-body.open { display: block; animation: slideDown 0.2s ease; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+.pop-body-inner { padding: 1.5rem 1.5rem 1.5rem 2rem; }
+
+/* ===== SOLUÇÃO ===== */
+.solution-section { margin-bottom: 1.5rem; }
+.solution-title {
+  font-family: var(--font-display); font-size: 17px; letter-spacing: 0.5px;
+  color: var(--text); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.step-list { list-style: none; }
+.step-item { display: flex; gap: 14px; margin-bottom: 10px; align-items: flex-start; }
+.step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--green-dark), var(--green));
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; flex-shrink: 0;
+  font-family: var(--font-mono); box-shadow: 0 2px 6px rgba(14,122,64,0.3);
+}
+.step-text { font-size: 13px; color: var(--text2); line-height: 1.65; padding-top: 4px; }
+.step-text strong { color: var(--text); }
+
+/* ===== RESPONSÁVEIS ===== */
+.resps-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.resp-chip {
+  display: flex; align-items: center; gap: 5px;
+  background: var(--green3); border: 1px solid var(--green4);
+  border-radius: 20px; padding: 4px 12px; font-size: 12px;
+  color: var(--green-mid); font-weight: 600;
+}
+
+/* ===== PDF BUTTON ===== */
+.pdf-btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: linear-gradient(135deg, var(--green-dark), var(--green));
+  color: #fff; border: none; border-radius: var(--radius-sm);
+  padding: 12px 22px; font-family: var(--font-body); font-size: 14px;
+  font-weight: 600; cursor: pointer; text-decoration: none;
+  transition: all 0.2s; box-shadow: 0 4px 14px rgba(14,122,64,0.35);
+}
+.pdf-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 22px rgba(14,122,64,0.45);
+  background: linear-gradient(135deg, var(--green), var(--teal));
+}
+
+/* ===== ALL POPS TABLE ===== */
+.all-pops-section {
+  margin-top: 3rem;
+  background: var(--bg2); border-radius: var(--radius-lg);
+  padding: 1.75rem; box-shadow: var(--shadow);
+  border: 1.5px solid var(--border);
+}
+.all-pops-hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+.all-pops-title {
+  font-family: var(--font-display); font-size: 22px; letter-spacing: 1px; color: var(--text);
+  display: flex; align-items: center; gap: 10px;
+}
+.all-pops-count {
+  font-size: 12px; font-family: var(--font-mono);
+  background: var(--green3); color: var(--green); border: 1px solid var(--green4);
+  padding: 3px 12px; border-radius: 20px; font-weight: 700;
+}
+.pops-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.pop-mini-card {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 12px; cursor: pointer;
+  transition: all 0.15s; display: flex; align-items: flex-start; gap: 10px;
+}
+.pop-mini-card:hover {
+  border-color: var(--green); background: var(--green3);
+  transform: translateY(-2px); box-shadow: var(--shadow);
+}
+.pop-mini-num {
+  font-size: 10px; font-family: var(--font-mono); color: var(--green);
+  font-weight: 700; background: rgba(14,122,64,0.12);
+  border-radius: 6px; padding: 2px 8px; white-space: nowrap; flex-shrink: 0;
+}
+.pop-mini-name { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.4; }
+
+/* ===== SEARCH BAR WITHIN ALL POPS ===== */
+.pop-search-input {
+  width: 100%; background: var(--bg3);
+  border: 1.5px solid var(--border2); border-radius: var(--radius-sm);
+  padding: 11px 16px; font-family: var(--font-body); font-size: 14px;
+  color: var(--text); outline: none; margin-bottom: 1.25rem;
+  transition: all 0.2s;
+}
+.pop-search-input:focus {
+  border-color: var(--green); background: #fff;
+  box-shadow: 0 0 0 3px rgba(14,122,64,0.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .main { padding: 1rem; }
+  .pops-grid { grid-template-columns: repeat(2, 1fr); }
+  .header-stats { display: none; }
+  .pop-card-hdr { gap: 10px; }
+  .relevance-bar-wrap { display: none; }
+  .brand-divider, .brand-tagline { display: none; }
+  .header-inner { padding: 1.25rem; }
+  .brand-name { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-orb1"></div>
+  <div class="header-orb2"></div>
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="brand-emblem"><img src="logo.jpg" alt="Matriz Educação"></div>
+      <div class="brand-text-block">
+        <div class="brand-name">CENTRAL DE POPs</div>
+        <div class="brand-sub">MATRIZ EDUCAÇÃO</div>
+      </div>
+      <div class="brand-divider"></div>
+      <div class="brand-tagline"><strong>Procedimentos Operacionais Padrão</strong><br>Diagnóstico inteligente de situações</div>
+    </div>
+    <div class="header-stats">
+      <div class="h-stat"><div class="h-stat-val" id="total-pops-stat">51</div><div class="h-stat-lbl">POPs ATIVOS</div></div>
+      <div class="h-stat"><div class="h-stat-val" id="consultas-stat">0</div><div class="h-stat-lbl">CONSULTAS HOJE</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- SEARCH -->
+  <div class="search-section">
+    <div class="search-label">🔍 Diagnóstico de Situação</div>
+    <div class="search-sub">Descreva abaixo o caso, ocorrência ou situação que aconteceu na escola. O sistema identificará automaticamente os POPs mais relevantes para orientar a resolução.</div>
+    <textarea class="search-area" id="search-input" placeholder="Exemplo: Um aluno chegou atrasado e não tinha autorização dos pais. O professor também faltou neste dia e não houve substituição..."></textarea>
+    <div class="examples-row">
+      <span style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:600;align-self:center;">EXEMPLOS:</span>
+      <span class="example-chip" onclick="inserirExemplo('Aluno chegou atrasado à escola e não tem autorização dos responsáveis para entrada fora do horário')">Aluno atrasado</span>
+      <span class="example-chip" onclick="inserirExemplo('Professor faltou hoje sem aviso prévio e não há substituto disponível para a turma')">Professor faltou</span>
+      <span class="example-chip" onclick="inserirExemplo('Aluno relatou sofrer bullying e assédio de colegas na escola, situação recorrente')">Bullying/assédio</span>
+      <span class="example-chip" onclick="inserirExemplo('Aluno precisa ser liberado mais cedo pelo responsável e não consta no sistema de autorização')">Liberação antecipada</span>
+      <span class="example-chip" onclick="inserirExemplo('Aluno passou mal com febre alta e precisa de atendimento, responsável não atende o telefone')">Aluno passou mal</span>
+      <span class="example-chip" onclick="inserirExemplo('Aluno acumulou muitas faltas e o conselho tutelar pode ser acionado')">Excesso de faltas</span>
+      <span class="example-chip" onclick="inserirExemplo('Novo aluno chegou para se matricular no meio do ano letivo')">Novo aluno no ano</span>
+      <span class="example-chip" onclick="inserirExemplo('Aluno com laudo de necessidade especial precisa de plano adaptado de estudos')">Aluno com laudo</span>
+    </div>
+    <div class="search-actions">
+      <button class="btn-analisar" onclick="analisar()">⚡ ANALISAR SITUAÇÃO</button>
+      <button class="btn-limpar" onclick="limpar()">Limpar</button>
+      <span class="search-tip">Quanto mais detalhado, melhor o resultado</span>
+    </div>
+  </div>
+
+  <!-- ANALYZING INDICATOR -->
+  <div class="analyzing" id="analyzing">
+    <div class="analyzing-dot"></div><div class="analyzing-dot"></div><div class="analyzing-dot"></div>
+    <div class="analyzing-msg">Analisando situação e cruzando com base de POPs...</div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results-section" style="display:none;">
+    <div class="results-header">
+      <div class="results-title">📋 POPs Recomendados</div>
+      <div class="results-badge" id="results-badge">0 POPs encontrados</div>
+    </div>
+    <div id="results-container"></div>
+  </div>
+
+  <!-- TODOS OS POPS -->
+  <div class="all-pops-section">
+    <div class="all-pops-hdr">
+      <div class="all-pops-title">📁 Todos os POPs</div>
+      <span style="font-size:12px;color:var(--text3);font-family:var(--font-mono);">Clique para abrir o PDF</span>
+    </div>
+    <input class="pop-search-input" id="mini-search" placeholder="🔎 Buscar POP por nome ou número..." oninput="filtrarMinis()">
+    <div class="pops-grid" id="pops-grid"></div>
+  </div>
+
+</div>
+
+<script>
+/* ===================================================
+   BASE DE DADOS DOS POPs
+=================================================== */
+var POPS_DB = [
+  {
+    num: '01', arquivo: 'POP 01 - Acompanhamento de Planejamento.docx.pdf',
+    nome: 'Acompanhamento de Planejamento',
+    descricao: 'Define o processo de acompanhamento do planejamento pedagógico dos professores pela coordenação.',
+    responsaveis: ['Coordenação Pedagógica', 'Professor'],
+    keywords: ['planejamento','plano de aula','aula','professor','pedagógico','coordenação','acompanhar','plano','plano anual','cronograma','conteúdo','currículo'],
+    solucao: [
+      'Verificar se o professor entregou o planejamento no prazo estabelecido.',
+      'Acessar o sistema (Layers) para consultar o planejamento digital do professor.',
+      'Realizar conversa de alinhamento com o professor sobre o planejamento pendente.',
+      'Registrar o acompanhamento na pasta da turma e na ficha individual do professor.',
+      'Definir prazo para regularização e comunicar à coordenação geral.'
+    ]
+  },
+  {
+    num: '02', arquivo: 'POP 02 -  Advertência ao aluno.docx.pdf',
+    nome: 'Advertência ao Aluno',
+    descricao: 'Estabelece o protocolo para aplicação de advertência formal a alunos com problemas de comportamento ou disciplina.',
+    responsaveis: ['Coordenação', 'Orientação Educacional'],
+    keywords: ['advertência','disciplina','indisciplina','comportamento','infração','regra','conduta','aluno problema','punição','sanção','desobediência','xingamento','briga','conflito entre alunos','desrespeito','falta de respeito','professor desrespeitado'],
+    solucao: [
+      'Chamar o aluno para uma conversa formal com o coordenador.',
+      'Ouvir o aluno e registrar a versão dele sobre o ocorrido.',
+      'Verificar se é primeira ocorrência ou reincidência (consultar ficha individual).',
+      'Preencher o Termo de Advertência com data, descrição do fato e assinatura do aluno.',
+      'Comunicar os responsáveis por escrito ou via Layers, com cópia na pasta da turma.',
+      'Encaminhar ao SOE em caso de reincidência para acompanhamento especializado.'
+    ]
+  },
+  {
+    num: '03', arquivo: 'POP 03 - Aplicativo Layers (Meu Matriz).pdf',
+    nome: 'Aplicativo Layers (Meu Matriz)',
+    descricao: 'Orienta o uso correto do aplicativo Layers para comunicação, lançamentos e gestão escolar.',
+    responsaveis: ['Todos os setores'],
+    keywords: ['layers','aplicativo','meu matriz','app','sistema','plataforma','digital','comunicado','notificação','login','acesso','senha','cadastro layers','comunicação digital'],
+    solucao: [
+      'Verificar se o usuário (professor/responsável) possui cadastro ativo no Layers.',
+      'Acessar o painel administrativo para reenviar convite de acesso.',
+      'Para dúvidas operacionais, consultar o manual do aplicativo disponível na coordenação.',
+      'Registrar comunicados e autorizações pelo Layers conforme procedimento padrão.',
+      'Em caso de falha do sistema, utilizar comunicação física (bilhete/ofício) como alternativa.'
+    ]
+  },
+  {
+    num: '04', arquivo: 'POP 04 - Atendimento ao professor 2026.pdf',
+    nome: 'Atendimento ao Professor',
+    descricao: 'Define os fluxos de atendimento, suporte e orientação aos professores pela equipe gestora.',
+    responsaveis: ['Coordenação Pedagógica', 'Direção'],
+    keywords: ['professor','atendimento professor','suporte docente','orientação pedagógica','reunião professor','demanda professor','dificuldade professor','problema professor','escuta','ouvir professor'],
+    solucao: [
+      'Agendar atendimento com o professor conforme POP 26 (Agendamento de Atendimento).',
+      'Criar ambiente de escuta ativa, sem julgamentos, registrando as demandas.',
+      'Identificar se a demanda é pedagógica, administrativa ou emocional.',
+      'Para demandas pedagógicas: encaminhar à coordenação. Para pessoais: ao SOE.',
+      'Registrar o atendimento e encaminhamentos realizados no sistema.',
+      'Fazer follow-up dentro de 5 dias úteis para verificar resolução.'
+    ]
+  },
+  {
+    num: '05', arquivo: 'POP 05 -  Atendimento de alunos.docx.pdf',
+    nome: 'Atendimento de Alunos',
+    descricao: 'Protocolo para atendimento de alunos pela coordenação e orientação educacional.',
+    responsaveis: ['Coordenação', 'SOE', 'Orientação Educacional'],
+    keywords: ['atendimento aluno','aluno','conversa aluno','ouvir aluno','demanda aluno','queixa aluno','reclamação aluno','aluno pede ajuda','aluno triste','aluno chorando','problema pessoal aluno'],
+    solucao: [
+      'Receber o aluno em sala reservada, garantindo privacidade e acolhimento.',
+      'Ouvir ativamente sem interromper, demonstrando empatia.',
+      'Verificar a natureza da demanda: disciplinar, pedagógica ou socioemocional.',
+      'Registrar o atendimento com data, nome do aluno e encaminhamentos.',
+      'Para casos de vulnerabilidade, acionar o SOE imediatamente.',
+      'Comunicar os responsáveis quando necessário, via Layers ou reunião.'
+    ]
+  },
+  {
+    num: '06', arquivo: 'POP 06 - Autorização de Visita Escolar.pdf',
+    nome: 'Autorização de Visita Escolar',
+    descricao: 'Establece os procedimentos para autorizar visitas, excursões e saídas escolares.',
+    responsaveis: ['Coordenação', 'Secretaria'],
+    keywords: ['visita','excursão','passeio','saída','viagem','autorização visita','saída escolar','evento externo','atividade externa','turma fora da escola'],
+    solucao: [
+      'Preencher o formulário de autorização com data, local, horário e objetivo da visita.',
+      'Enviar autorização aos responsáveis com pelo menos 5 dias de antecedência via Layers.',
+      'Coletar as autorizações assinadas e arquivar na pasta da turma.',
+      'Alunos sem autorização não poderão participar — comunicar os responsáveis.',
+      'Definir professores/monitores responsáveis e registrar a atividade no diário de classe.'
+    ]
+  },
+  {
+    num: '07', arquivo: 'POP 07 - Carômetro.docx.pdf',
+    nome: 'Carômetro',
+    descricao: 'Procedimento para criação, atualização e uso do carômetro de alunos e professores.',
+    responsaveis: ['Secretaria', 'Coordenação'],
+    keywords: ['carômetro','foto','fotografia','identificação','cadastro','imagem aluno','reconhecimento facial','lista de alunos','turma foto'],
+    solucao: [
+      'Verificar se todas as fotos dos alunos estão atualizadas no sistema.',
+      'Solicitar fotos dos alunos novos via responsáveis ou pelo sistema Layers.',
+      'Atualizar o carômetro digital na plataforma conforme orientação da secretaria.',
+      'Imprimir o carômetro atualizado para uso em sala pelos professores quando necessário.',
+      'Refazer o carômetro no início de cada ano letivo ou quando houver mudança significativa de turma.'
+    ]
+  },
+  {
+    num: '08', arquivo: 'POP 08 - Controle de Entrada de Professores.docx.pdf',
+    nome: 'Controle de Entrada de Professores',
+    descricao: 'Define como registrar e controlar a entrada e saída de professores na unidade.',
+    responsaveis: ['Coordenação', 'Secretaria', 'Portaria'],
+    keywords: ['entrada professor','ponto professor','frequência professor','controle docente','registro entrada','professor não assinou','biometria','registro de ponto','horário professor'],
+    solucao: [
+      'Verificar se o professor registrou sua entrada no sistema de controle.',
+      'Caso haja falha no sistema, registrar manualmente no livro de ponto da coordenação.',
+      'Comunicar ao professor sobre a irregularidade no registro.',
+      'Encaminhar inconsistências ao RH para análise e regularização.',
+      'Manter relatório semanal de frequência para avaliação da coordenação geral.'
+    ]
+  },
+  {
+    num: '09', arquivo: 'POP 09 - Entrada_Atraso de Alunos.docx.pdf',
+    nome: 'Entrada / Atraso de Alunos',
+    descricao: 'Protocolo para receber alunos que chegam após o horário de entrada estabelecido.',
+    responsaveis: ['Portaria', 'Coordenação', 'Secretaria'],
+    keywords: ['atraso','atrasado','chegou tarde','entrada','portaria','horário','aluno fora do horário','aluno chegou depois','chegada tardia','aluno atrasado','não estava na hora','chegou após início'],
+    solucao: [
+      'Receber o aluno na portaria com acolhimento, sem constrangimento.',
+      'Registrar o atraso no livro/sistema com horário de chegada e justificativa.',
+      'Verificar se há autorização do responsável para entrada após o horário.',
+      'Encaminhar o aluno à coordenação se for atraso sem justificativa ou recorrente.',
+      'Comunicar o responsável via Layers sobre o atraso registrado.',
+      'Em caso de atrasos recorrentes, agendar reunião com a família (POP 26).'
+    ]
+  },
+  {
+    num: '10', arquivo: 'POP 10 -  Falta de professores.docx.pdf',
+    nome: 'Falta de Professores',
+    descricao: 'Define os procedimentos a serem adotados quando um professor falta sem substituto disponível.',
+    responsaveis: ['Coordenação Pedagógica', 'Direção'],
+    keywords: ['falta professor','professor faltou','ausência professor','professor não veio','sem professor','turma sem aula','substituição professor','reposição','aula vaga','professor ausente','professor ligou que não vem'],
+    solucao: [
+      'Verificar se há professor reserva ou com disponibilidade na grade para assumir a turma.',
+      'Acionar imediatamente outro professor ou pedagogo para acompanhar a turma.',
+      'Enviar atividade pedagógica previamente preparada para a turma não ficar sem conteúdo.',
+      'Registrar a falta no sistema e no controle de frequência docente.',
+      'Comunicar a família via Layers sobre a situação, se a aula não puder ser suprida.',
+      'Agendar reposição de aula com o professor conforme calendário escolar.',
+      'Para faltas recorrentes, abrir processo de advertência docente via RH.'
+    ]
+  },
+  {
+    num: '12', arquivo: 'POP 12 - Liberação de Alunos_.docx.pdf',
+    nome: 'Liberação de Alunos',
+    descricao: 'Protocolo para liberar alunos antes do horário regular, com segurança e rastreabilidade.',
+    responsaveis: ['Coordenação', 'Portaria', 'Secretaria'],
+    keywords: ['liberar aluno','liberação','sair mais cedo','saída antecipada','responsável buscar','pegar aluno','aluno indo embora','aluno sair','autorização saída','buscar antes do horário','responsável veio buscar'],
+    solucao: [
+      'Verificar a identidade do responsável que veio buscar o aluno na portaria.',
+      'Conferir se o responsável está cadastrado no sistema como autorizado para retirada.',
+      'Solicitar documento de identidade e registrar o horário de saída.',
+      'Chamar o aluno somente após confirmação da identidade do responsável.',
+      'Preencher o registro de saída antecipada no livro/sistema com justificativa.',
+      'NUNCA liberar para pessoas não autorizadas — acionar a coordenação imediatamente.'
+    ]
+  },
+  {
+    num: '14', arquivo: 'POP 14 - Mural das Turmas.docx.pdf',
+    nome: 'Mural das Turmas',
+    descricao: 'Define a gestão e atualização do mural informativo das turmas.',
+    responsaveis: ['Coordenação', 'Professores'],
+    keywords: ['mural','mural turma','informativo','painel','exposição','avisos turma','cartaz','decoração'],
+    solucao: [
+      'Verificar se o mural da turma está atualizado com as informações do período.',
+      'Incluir no mural: datas importantes, ranking de desempenho, trabalhos dos alunos.',
+      'Cada turma deve ter seu espaço demarcado e atualizado quinzenalmente.',
+      'O professor responsável pela turma deve coordenar as atualizações com os alunos.',
+      'Registrar boas práticas do mural como modelo para outras turmas.'
+    ]
+  },
+  {
+    num: '15', arquivo: 'POP 15 - Pasta da Turma e Ficha Individual do Aluno.docx.pdf',
+    nome: 'Pasta da Turma e Ficha Individual do Aluno',
+    descricao: 'Organização e manutenção da pasta da turma com documentação de cada aluno.',
+    responsaveis: ['Secretaria', 'Coordenação'],
+    keywords: ['pasta turma','ficha aluno','documento aluno','prontuário','arquivar','histórico aluno','ficha cadastral','registro aluno','documentação'],
+    solucao: [
+      'Verificar se a pasta da turma contém todas as fichas individuais atualizadas.',
+      'Incluir novos documentos: advertências, autorizações, laudos, declarações.',
+      'Solicitar documentos pendentes às famílias via Layers.',
+      'Manter organização cronológica dos documentos por aluno.',
+      'Realizar auditoria trimestral das pastas com a secretaria.'
+    ]
+  },
+  {
+    num: '18', arquivo: 'POP 18 - Processos de Carteirinhas.docx.pdf',
+    nome: 'Processos de Carteirinhas',
+    descricao: 'Define o processo de emissão, renovação e controle das carteirinhas estudantis.',
+    responsaveis: ['Secretaria'],
+    keywords: ['carteirinha','documento estudantil','identidade estudantil','cartão aluno','renovação carteirinha','segunda via carteirinha'],
+    solucao: [
+      'Receber a solicitação de carteirinha e verificar os documentos do aluno.',
+      'Registrar no sistema e encaminhar para confecção conforme calendário.',
+      'Comunicar o aluno/responsável sobre o prazo de entrega.',
+      'Para segunda via, cobrar taxa conforme regulamento e registrar o pedido.'
+    ]
+  },
+  {
+    num: '19', arquivo: 'POP 19 - Rotina de Avaliação.docx.pdf',
+    nome: 'Rotina de Avaliação',
+    descricao: 'Estabelece a rotina e os procedimentos para aplicação de avaliações.',
+    responsaveis: ['Coordenação Pedagógica', 'Professores'],
+    keywords: ['avaliação','prova','teste','nota','avaliação bimestral','calendário avaliação','aplicação prova','fiscalização prova','dia de prova','rotina avaliação','gabarito','correção prova'],
+    solucao: [
+      'Verificar se a avaliação está alinhada com o calendário bimestral da escola.',
+      'Conferir se o professor cadastrou a avaliação no sistema com antecedência.',
+      'Organizar as salas e fiscalização conforme escala da coordenação.',
+      'Após a aplicação, seguir o POP 21 para escaneamento do cartão resposta.',
+      'Lançar as notas no sistema dentro do prazo definido no calendário.',
+      'Casos de cola ou irregularidade devem ser registrados e comunicados à coordenação.'
+    ]
+  },
+  {
+    num: '20', arquivo: 'POP 20 - Segunda Chamada e Prova de Recuperação.docx.pdf',
+    nome: 'Segunda Chamada e Prova de Recuperação',
+    descricao: 'Procedimentos para solicitação e aplicação de segunda chamada e recuperação.',
+    responsaveis: ['Secretaria', 'Coordenação Pedagógica', 'Professores'],
+    keywords: ['segunda chamada','recuperação','prova recuperação','faltou prova','prova perdida','recuperação final','recuperação paralela','pedir segunda chamada','aluno não fez prova','reprovação'],
+    solucao: [
+      'Verificar se o aluno solicitou segunda chamada dentro do prazo (geralmente 48h após a prova).',
+      'Conferir se a justificativa apresentada é válida conforme regimento escolar.',
+      'Registrar a solicitação no sistema com documentação comprobatória.',
+      'Agendar a prova de segunda chamada conforme disponibilidade do professor.',
+      'Para recuperação: identificar os alunos com nota insuficiente e seguir o calendário.',
+      'Comunicar responsáveis sobre a necessidade de recuperação via Layers.'
+    ]
+  },
+  {
+    num: '21', arquivo: 'POP 21 - Escaneamento de Cartão Resposta.docx.pdf',
+    nome: 'Escaneamento de Cartão Resposta',
+    descricao: 'Define o processo técnico de escaneamento e correção automática dos cartões de resposta.',
+    responsaveis: ['Secretaria', 'Coordenação Pedagógica'],
+    keywords: ['cartão resposta','escaneamento','gabarito','correção automática','scanner','leitura óptica','resultado avaliação','nota automática','digitalizar provas'],
+    solucao: [
+      'Recolher os cartões resposta após a aplicação da avaliação.',
+      'Verificar se todos os cartões estão preenchidos corretamente (nome, turma, número).',
+      'Realizar o escaneamento na ordem definida pelo sistema.',
+      'Conferir os resultados gerados e corrigir eventuais erros de leitura manualmente.',
+      'Exportar os dados para lançamento no sistema de notas.',
+      'Arquivar os cartões físicos pelo prazo definido pelo regimento.'
+    ]
+  },
+  {
+    num: '22', arquivo: 'POP 22 - Sala de Monitoria e Sala de Estudo.pdf',
+    nome: 'Sala de Monitoria e Sala de Estudo',
+    descricao: 'Regula o uso das salas de monitoria e reforço, com responsabilidades e horários.',
+    responsaveis: ['Coordenação', 'Monitores', 'Professores'],
+    keywords: ['monitoria','reforço','sala estudo','apoio pedagógico','monitor','aula de reforço','dificuldade aprendizagem','recuperação aulas','aluno com dificuldade','aprendizagem'],
+    solucao: [
+      'Identificar os alunos com dificuldade e encaminhá-los para a sala de monitoria.',
+      'Verificar o horário disponível da sala e dos monitores.',
+      'Registrar a frequência do aluno nas sessões de monitoria.',
+      'Comunicar os responsáveis sobre a participação do aluno no reforço via Layers.',
+      'Acompanhar a evolução do aluno e ajustar a frequência conforme desempenho.',
+      'Para alunos com dificuldade persistente, acionar o SOE para avaliação mais ampla.'
+    ]
+  },
+  {
+    num: '23', arquivo: 'POP 23 - Medicamentos e Kit de Primeiros Socorros.pdf',
+    nome: 'Medicamentos e Kit de Primeiros Socorros',
+    descricao: 'Procedimentos para administração de medicamentos e uso do kit de primeiros socorros.',
+    responsaveis: ['Coordenação', 'Equipe de Saúde', 'Secretaria'],
+    keywords: ['medicamento','remédio','kit primeiros socorros','saúde','doença','mal estar','febre','dor de cabeça','aluno doente','emergência saúde','atendimento médico','crise','kit médico','curativo','primeiro socorro'],
+    solucao: [
+      'Avaliar a situação do aluno e chamar o responsável pela saúde da unidade.',
+      'Verificar se há autorização dos pais/responsáveis para administrar medicamento.',
+      'NUNCA administrar medicamentos sem autorização escrita dos responsáveis.',
+      'Registrar toda ocorrência de saúde no livro de ocorrências com horário e sintomas.',
+      'Acionar os responsáveis imediatamente por telefone e via Layers.',
+      'Em caso de emergência grave (acidente, convulsão, etc.), ligar 192 (SAMU) e seguir o POP 45.',
+      'Manter o kit de primeiros socorros atualizado e verificado mensalmente.'
+    ]
+  },
+  {
+    num: '25', arquivo: 'POP 25 - Avaliação Integral do Aluno.docx.pdf',
+    nome: 'Avaliação Integral do Aluno',
+    descricao: 'Define os critérios e processos da avaliação integral, considerando aspectos além da nota.',
+    responsaveis: ['Coordenação Pedagógica', 'SOE', 'Professores'],
+    keywords: ['avaliação integral','desempenho aluno','comportamento avaliação','avaliação socioemocional','notas e comportamento','avaliação holística','integral aluno'],
+    solucao: [
+      'Reunir informações de desempenho acadêmico e comportamental do aluno.',
+      'Consultar os professores de cada disciplina sobre o perfil do aluno.',
+      'Verificar frequência, participação e atitudes registradas no período.',
+      'Preencher a ficha de avaliação integral conforme modelo padronizado.',
+      'Apresentar os resultados em conselho de classe ou reunião pedagógica.',
+      'Definir encaminhamentos para apoio ao aluno com base na avaliação completa.'
+    ]
+  },
+  {
+    num: '26a', arquivo: 'POP 26 - Agendamento de atendimento.pdf',
+    nome: 'Agendamento de Atendimento',
+    descricao: 'Fluxo para agendamento de atendimentos entre equipe escolar, famílias e alunos.',
+    responsaveis: ['Secretaria', 'Coordenação', 'SOE'],
+    keywords: ['agendamento','agenda','reunião','marcar atendimento','reunião família','reunião responsável','conversa marcada','horário atendimento','atender responsável','agendar'],
+    solucao: [
+      'Verificar a disponibilidade de horário do profissional responsável pelo atendimento.',
+      'Registrar o agendamento no sistema com nome, contato e motivo.',
+      'Confirmar o agendamento com o responsável/aluno por telefone ou Layers.',
+      'Enviar lembrete 24h antes via Layers.',
+      'Em caso de cancelamento, reagendar em até 2 dias úteis.'
+    ]
+  },
+  {
+    num: '26b', arquivo: 'POP 26 - Plano Educacional Individualizado.pdf',
+    nome: 'Plano Educacional Individualizado (PEI)',
+    descricao: 'Define os procedimentos para elaboração e acompanhamento do PEI para alunos com necessidades especiais.',
+    responsaveis: ['SOE', 'Coordenação Pedagógica', 'Professores', 'Equipe Multidisciplinar'],
+    keywords: ['PEI','plano educacional individualizado','inclusão','necessidade especial','laudo','diagnóstico','adaptação','deficiência','autismo','tdah','dislexia','adaptação curricular','necessidades especiais','aluno especial','público alvo educação especial'],
+    solucao: [
+      'Receber o laudo médico/psicológico e registrar na ficha do aluno.',
+      'Convocar reunião com professores, família e equipe multidisciplinar.',
+      'Elaborar o PEI com metas, adaptações curriculares e estratégias pedagógicas.',
+      'Revisar o PEI a cada bimestre e ajustar conforme o progresso do aluno.',
+      'Manter cópia do PEI na pasta da turma e no sistema (Layers).',
+      'Comunicar todos os professores sobre as adaptações necessárias para o aluno.'
+    ]
+  },
+  {
+    num: '27', arquivo: 'POP 27 - Cerimônia do Hino e Bandeira Nacional 2026.docx (1).pdf',
+    nome: 'Cerimônia do Hino e Bandeira Nacional',
+    descricao: 'Protocolo para realização da cerimônia cívica do hino e bandeira nacional.',
+    responsaveis: ['Coordenação', 'Professores'],
+    keywords: ['hino','bandeira','cerimônia','cívico','civismo','hino nacional','cerimônia cívica','bandeira nacional'],
+    solucao: [
+      'Organizar os alunos no pátio conforme a disposição padrão.',
+      'Verificar o sistema de som com antecedência para a execução do hino.',
+      'Designar alunos monitores para o hasteamento da bandeira.',
+      'Realizar a cerimônia conforme o calendário cívico estabelecido.',
+      'Registrar a participação e eventuais intercorrências.'
+    ]
+  },
+  {
+    num: '28', arquivo: 'POP 28 - Dependência 2025..pdf',
+    nome: 'Dependência',
+    descricao: 'Regulamenta o processo de dependência escolar para alunos com reprovação em matérias.',
+    responsaveis: ['Secretaria', 'Coordenação Pedagógica', 'Professores'],
+    keywords: ['dependência','reprovação','matéria','disciplina reprovada','aluno reprovado','cursando dependência','aprovado com dependência','depende','dependência escolar'],
+    solucao: [
+      'Verificar no sistema as disciplinas em que o aluno está em dependência.',
+      'Comunicar o aluno e os responsáveis formalmente sobre a situação.',
+      'Organizar o horário de dependência conforme disponibilidade do professor.',
+      'Registrar a frequência e o desempenho do aluno nas aulas de dependência.',
+      'Emitir resultado da dependência ao final do período e atualizar o histórico.'
+    ]
+  },
+  {
+    num: '29', arquivo: 'POP 29 - ALUNOS INGRESSOS AO LONGO DO ANO LETIVO.docx.pdf',
+    nome: 'Alunos Ingressos ao Longo do Ano Letivo',
+    descricao: 'Define o processo de matrícula e adaptação de novos alunos que ingressam fora do início do ano.',
+    responsaveis: ['Secretaria', 'Coordenação'],
+    keywords: ['novo aluno','ingresso','matrícula','entrou no meio do ano','chegou agora','novo estudante','matrícula nova','transferência entrada','incorporação aluno','aluno novo','chegou tarde no ano'],
+    solucao: [
+      'Receber a documentação completa do aluno para abertura do processo de matrícula.',
+      'Verificar a vaga disponível na turma adequada para o aluno.',
+      'Realizar entrevista de acolhimento com o aluno e a família.',
+      'Apresentar o aluno à turma e designar colega para apoio inicial.',
+      'Criar a ficha individual e incluir na pasta da turma.',
+      'Informar os professores da turma sobre a chegada do novo aluno e seu histórico.',
+      'Acompanhar a adaptação nas primeiras 2 semanas.'
+    ]
+  },
+  {
+    num: '30', arquivo: 'POP 30 - ALUNOS CANCELADOS.docx.pdf',
+    nome: 'Alunos Cancelados',
+    descricao: 'Procedimento para cancelamento formal de matrícula de alunos.',
+    responsaveis: ['Secretaria', 'Coordenação', 'Direção'],
+    keywords: ['cancelamento','cancelar','desistência','desistente','aluno cancelou','saiu da escola','trancamento','trancou matrícula','aluno saiu','não voltou','abandonou'],
+    solucao: [
+      'Verificar o motivo do cancelamento junto ao responsável.',
+      'Tentar contato de retenção antes de formalizar o cancelamento.',
+      'Preencher o formulário de cancelamento com data e motivo declarado.',
+      'Emitir a declaração de histórico escolar e transferência quando solicitado.',
+      'Registrar no sistema e retirar o aluno de todas as listas ativas.',
+      'Arquivar o processo na pasta individual por prazo legal.'
+    ]
+  },
+  {
+    num: '31', arquivo: 'POP 31 - ALUNOS TRANSFERIDOS ENTRE UNIDADES DO MATRIZ.docx.pdf',
+    nome: 'Alunos Transferidos Entre Unidades do Matriz',
+    descricao: 'Define o fluxo de transferência de alunos entre as unidades da rede Matriz.',
+    responsaveis: ['Secretaria', 'Coordenação', 'Direção'],
+    keywords: ['transferência','transferir','mudança de unidade','outra unidade','aluno transferido','mudar de escola','matriz outra unidade','transferência interna'],
+    solucao: [
+      'Receber a solicitação de transferência da família com o motivo.',
+      'Verificar disponibilidade de vaga na unidade de destino.',
+      'Gerar a documentação de transferência: declaração, histórico e ficha.',
+      'Comunicar a unidade de destino sobre a chegada do aluno.',
+      'Registrar no sistema a saída do aluno desta unidade.',
+      'Arquivar cópia do processo de transferência.'
+    ]
+  },
+  {
+    num: '32', arquivo: 'POP 32 - CONSELHO TUTELAR_ COMUNICADO PELO EXCESSO DE FALTAS NO ANO LETIVO .docx.pdf',
+    nome: 'Conselho Tutelar — Excesso de Faltas',
+    descricao: 'Define quando e como comunicar o Conselho Tutelar sobre excesso de faltas de aluno.',
+    responsaveis: ['Coordenação', 'Direção', 'SOE'],
+    keywords: ['conselho tutelar','excesso de faltas','muitas faltas','faltas repetidas','falta acumulada','notificar conselho','proteção criança','faltas injustificadas','aluno faltando muito','evasão escolar'],
+    solucao: [
+      'Verificar o total de faltas do aluno no sistema — acima de 25% é considerado excesso.',
+      'Tentar contato com a família por todos os meios disponíveis (telefone, Layers, carta).',
+      'Registrar todas as tentativas de contato frustradas com datas e horários.',
+      'Preencher o formulário de comunicação ao Conselho Tutelar com histórico completo.',
+      'Encaminhar o documento ao Conselho Tutelar pessoalmente ou por protocolo.',
+      'Manter cópia do comunicado no prontuário do aluno.',
+      'Acompanhar o retorno do Conselho Tutelar e registrar as providências tomadas.'
+    ]
+  },
+  {
+    num: '33', arquivo: 'POP 33 - CONSELHO TUTELAR_ INTOLERÂNCIA E_OU ASSÉDIO.docx.pdf',
+    nome: 'Conselho Tutelar — Intolerância e/ou Assédio',
+    descricao: 'Protocolo para denúncia ao Conselho Tutelar em casos de intolerância, discriminação ou assédio.',
+    responsaveis: ['Direção', 'SOE', 'Coordenação'],
+    keywords: ['intolerância','assédio','discriminação','preconceito','conselho tutelar','violência escolar','racismo','homofobia','xenofobia','denúncia','violência','abuso','maus tratos','denunciar'],
+    solucao: [
+      'Acolher a vítima em ambiente seguro e confidencial.',
+      'Ouvir o relato sem questionamentos que possam revitimizar.',
+      'Registrar todos os detalhes: data, hora, local, envolvidos e descrição do fato.',
+      'Comunicar imediatamente a direção e o SOE.',
+      'Acionar o Conselho Tutelar se envolver menor em situação de risco.',
+      'Investigar o caso internamente e tomar providências disciplinares.',
+      'Não confrontar o agressor antes de garantir a segurança da vítima.',
+      'Manter sigilo absoluto sobre a identidade da vítima durante a investigação.'
+    ]
+  },
+  {
+    num: '34', arquivo: 'POP 34 - ORIENTADOR DA AUTODECLARAÇÃO PARA ATIVIDADES NAS AULA_S DE EDUCAÇÃO FÍSICA 2024.docx.pdf',
+    nome: 'Autodeclaração — Educação Física',
+    descricao: 'Orienta o processo de autodeclaração para dispensa ou adaptação nas aulas de Educação Física.',
+    responsaveis: ['Coordenação', 'Professor de Ed. Física', 'Secretaria'],
+    keywords: ['educação física','dispensa ed física','atestado','laudo ed física','não faz ed física','dispensa aula','declaração responsável ed física','atividade física','aluno dispensado'],
+    solucao: [
+      'Verificar se o aluno possui atestado médico ou declaração dos pais para dispensa.',
+      'Registrar a autodeclaração no sistema e na ficha do aluno.',
+      'Comunicar o professor de Educação Física sobre a situação do aluno.',
+      'Definir atividade alternativa para o aluno durante as aulas (pesquisa, arbitragem).',
+      'Renovar a declaração semestralmente conforme exigência do regimento.'
+    ]
+  },
+  {
+    num: '35', arquivo: 'POP 35 - ORIENTAÇÃO SOBRE DECLARAÇÕES FEITAS POR RESPONSÁVEIS VIA LAYERS.docx.pdf',
+    nome: 'Declarações por Responsáveis via Layers',
+    descricao: 'Orienta como processar declarações e autorizações enviadas pelos responsáveis pelo aplicativo Layers.',
+    responsaveis: ['Coordenação', 'Secretaria'],
+    keywords: ['declaração layers','autorização layers','responsável enviou layers','layers autorização','comunicado layers','declaração digital','autorização digital','declaração responsável'],
+    solucao: [
+      'Acessar o painel do Layers para visualizar as declarações recebidas.',
+      'Verificar a autenticidade e completude da declaração recebida.',
+      'Imprimir a declaração e arquivar na pasta do aluno.',
+      'Para declarações que requerem ação imediata, encaminhar ao setor responsável.',
+      'Confirmar o recebimento ao responsável pelo Layers.'
+    ]
+  },
+  {
+    num: '36', arquivo: 'POP 36 - ORIENTADOR SOBRE FORMAS DE ASSÉDIO.docx.pdf',
+    nome: 'Orientação sobre Formas de Assédio',
+    descricao: 'Material de orientação sobre identificação e combate ao assédio no ambiente escolar.',
+    responsaveis: ['SOE', 'Direção', 'Todos os Colaboradores'],
+    keywords: ['assédio','assédio sexual','assédio moral','bullying','cyberbullying','violência psicológica','abuso','intimidação','ameaça','humilhação','coação','vítima assédio','formas de assédio','proteger aluno'],
+    solucao: [
+      'Identificar os sinais de assédio: isolamento, tristeza, queda de desempenho, marcas físicas.',
+      'Acolher imediatamente o aluno/funcionário vítima.',
+      'Seguir o protocolo do POP 33 para envolver o Conselho Tutelar quando necessário.',
+      'Aplicar medidas disciplinares ao agressor conforme regimento escolar (POP 02).',
+      'Registrar e documentar todas as ocorrências com riqueza de detalhes.',
+      'Promover ações preventivas de conscientização na escola.'
+    ]
+  },
+  {
+    num: '37', arquivo: 'POP 37 - PROCESSO DE CLASSIFICAÇÃO_RECLASSIFICAÇÃO.docx.pdf',
+    nome: 'Classificação / Reclassificação',
+    descricao: 'Procedimentos para classificar ou reclassificar alunos de turma ou série.',
+    responsaveis: ['Coordenação Pedagógica', 'Secretaria', 'Direção'],
+    keywords: ['classificação','reclassificação','mudar turma','mudar série','avançar série','nível aluno','turma adequada','avaliação classificatória','progressão','avançar'],
+    solucao: [
+      'Receber a solicitação de classificação/reclassificação da família ou proposta pedagógica.',
+      'Aplicar avaliação classificatória nas disciplinas relevantes.',
+      'Reunir o conselho pedagógico para análise do caso.',
+      'Emitir parecer formal com justificativa para aprovação ou negação.',
+      'Atualizar o sistema com a nova turma/série do aluno.',
+      'Comunicar professores da nova turma sobre o histórico do aluno.'
+    ]
+  },
+  {
+    num: '38', arquivo: 'POP 38 - SOLICITAÇÃO DE DECLARAÇÃO PARA DOCENTES OU ESTAGIÁRIOS.docx.pdf',
+    nome: 'Declaração para Docentes ou Estagiários',
+    descricao: 'Processo de solicitação e emissão de declarações para professores e estagiários.',
+    responsaveis: ['Secretaria', 'RH', 'Direção'],
+    keywords: ['declaração professor','declaração estagiário','documento professor','declaração de vínculo','comprovante docente','declaração de trabalho','certidão','documento trabalho'],
+    solucao: [
+      'Receber a solicitação formal do docente/estagiário com especificação do tipo de declaração.',
+      'Verificar o prazo para emissão (geralmente 3 a 5 dias úteis).',
+      'Emitir a declaração conforme modelo padronizado da instituição.',
+      'Registrar no livro de controle de documentos emitidos.',
+      'Entregar ao solicitante mediante assinatura de recebimento.'
+    ]
+  },
+  {
+    num: '39', arquivo: 'POP 39 - USO DO NOME SOCIAL.docx.pdf',
+    nome: 'Uso do Nome Social',
+    descricao: 'Define como tratar e registrar o uso do nome social por alunos e funcionários.',
+    responsaveis: ['Secretaria', 'Coordenação', 'Todos os Colaboradores'],
+    keywords: ['nome social','identidade de gênero','lgbtq','transgênero','trans','não binário','respeito identidade','gênero','diversidade','inclusão social','chamar pelo nome','nome preferido'],
+    solucao: [
+      'Registrar o nome social no sistema mediante solicitação do aluno/responsável.',
+      'Comunicar todos os professores e colaboradores sobre o uso do nome social.',
+      'Garantir que o nome social seja utilizado em todas as situações cotidianas.',
+      'Para documentos oficiais, manter o nome de registro legal conforme exigência legal.',
+      'Tratar qualquer situação de desrespeito ao nome social como questão disciplinar.',
+      'Acionar o SOE para apoio emocional ao aluno se necessário.'
+    ]
+  },
+  {
+    num: '40', arquivo: 'POP 40 RDI.pdf',
+    nome: 'RDI — Relatório de Desenvolvimento Individual',
+    descricao: 'Procedimentos para elaboração e acompanhamento do Relatório de Desenvolvimento Individual.',
+    responsaveis: ['SOE', 'Coordenação Pedagógica', 'Professores'],
+    keywords: ['RDI','relatório desenvolvimento','relatório individual','inclusão RDI','acompanhamento desenvolvimento','progresso aluno inclusão','desenvolvimento aluno especial'],
+    solucao: [
+      'Identificar os alunos que precisam de RDI (com necessidades especiais ou em acompanhamento).',
+      'Reunir informações de todos os professores sobre o aluno.',
+      'Preencher o RDI conforme modelo padronizado do SOE.',
+      'Apresentar o RDI à família em reunião específica.',
+      'Revisar o RDI a cada bimestre e atualizar os dados de desenvolvimento.'
+    ]
+  },
+  {
+    num: '41', arquivo: 'POP 41 -PROJETOS - SOE.docx.pdf',
+    nome: 'Projetos — SOE',
+    descricao: 'Define os procedimentos para desenvolvimento e acompanhamento de projetos do SOE.',
+    responsaveis: ['SOE', 'Coordenação'],
+    keywords: ['projetos SOE','orientação educacional','projeto escolar','projeto social','ação SOE','intervenção SOE','projeto turma'],
+    solucao: [
+      'Identificar a demanda que originou o projeto (prevenção, intervenção, promoção).',
+      'Elaborar o plano de ação com objetivos, público-alvo, cronograma e recursos.',
+      'Apresentar o projeto à coordenação/direção para aprovação.',
+      'Executar as ações conforme planejado e registrar a participação.',
+      'Avaliar os resultados e produzir relatório final para o arquivo.'
+    ]
+  },
+  {
+    num: '42', arquivo: 'POP 42 -Visita as unidades.docx.pdf',
+    nome: 'Visita às Unidades',
+    descricao: 'Protocolo para visitas institucionais e inspeções pedagógicas entre unidades.',
+    responsaveis: ['Direção', 'Coordenação Regional'],
+    keywords: ['visita unidade','inspeção','supervisão','visita gestão','visita pedagógica','visita institucional','supervisão escolar','visita diretoria'],
+    solucao: [
+      'Comunicar a unidade com antecedência sobre a visita.',
+      'Preparar os documentos e relatórios de gestão para apresentação.',
+      'Receber o visitante e apresentar a equipe e as instalações.',
+      'Preencher o relatório de visita com os pontos levantados.',
+      'Encaminhar o plano de ação para os pontos de melhoria identificados.'
+    ]
+  },
+  {
+    num: '43', arquivo: 'POP 43 -ATENDIMENTO AOS RESPONSÁVEIS,  ALUNOS E EQUIPE MULTIDISCIPLINAR - SOE (1).pdf',
+    nome: 'Atendimento SOE — Responsáveis, Alunos e Equipe Multidisciplinar',
+    descricao: 'Fluxo de atendimento do SOE envolvendo responsáveis, alunos e equipe multidisciplinar.',
+    responsaveis: ['SOE', 'Psicólogo', 'Assistente Social'],
+    keywords: ['SOE atendimento','atendimento psicológico','saúde mental aluno','ansiedade aluno','depressão aluno','crise emocional','acompanhamento familiar','equipe multidisciplinar','psicólogo','assistente social','família em crise','responsável em crise','aluno em crise'],
+    solucao: [
+      'Acolher o aluno/responsável em sala privativa do SOE.',
+      'Ouvir o relato completo sem interrupções.',
+      'Verificar se há risco imediato de segurança (automutilação, violência doméstica).',
+      'Se houver risco imediato: acionar apoio de emergência e a direção.',
+      'Iniciar processo de acompanhamento regular com registro de cada atendimento.',
+      'Articular com a equipe multidisciplinar conforme a necessidade do caso.',
+      'Comunicar e orientar a família sobre os próximos passos.'
+    ]
+  },
+  {
+    num: '44', arquivo: 'POP 44 - SOE.docx.docx.pdf',
+    nome: 'SOE — Serviço de Orientação Educacional',
+    descricao: 'Normas gerais e procedimentos do SOE na unidade escolar.',
+    responsaveis: ['SOE'],
+    keywords: ['SOE','orientação educacional','serviço orientação','orientador','socioemocional','acompanhamento aluno','suporte emocional'],
+    solucao: [
+      'Encaminhar o caso ao SOE com histórico documentado.',
+      'O SOE realizará triagem e definirá o tipo de atendimento necessário.',
+      'Seguir os encaminhamentos do SOE em conjunto com a coordenação pedagógica.',
+      'Acompanhar periodicamente os casos em monitoramento pelo SOE.',
+      'Manter comunicação ativa entre SOE, família e equipe pedagógica.'
+    ]
+  },
+  {
+    num: '45', arquivo: 'POP 45- Protocolo de Acidentados.pdf',
+    nome: 'Protocolo de Acidentados',
+    descricao: 'Define os procedimentos emergenciais para atendimento de alunos e funcionários acidentados.',
+    responsaveis: ['Todos', 'Coordenação', 'Direção'],
+    keywords: ['acidente','acidentado','machucado','queda','ferimento','emergência','socorro','sangue','fratura','desmaio','convulsão','engasgado','intoxicação','acidente grave','urgência','ambulância','SAMU'],
+    solucao: [
+      '🚨 MANTENHA A CALMA e proteja a cena do acidente.',
+      'Verificar o estado do acidentado: está consciente? Está respirando?',
+      'NÃO mover o acidentado se houver suspeita de lesão na coluna ou cabeça.',
+      'Acionar imediatamente: SAMU (192) ou Bombeiros (193) para casos graves.',
+      'Comunicar a direção/coordenação imediatamente.',
+      'Ligar para os responsáveis do aluno informando a situação.',
+      'Registrar o acidente com detalhes no Livro de Ocorrências.',
+      'Preencher o Boletim de Acidente escolar e arquivar em 24h.'
+    ]
+  },
+  {
+    num: '46', arquivo: 'POP 46 - EFAI_Acompanhamento da Prática Pedagógica 2026.docx (1).pdf',
+    nome: 'EFAI — Acompanhamento da Prática Pedagógica',
+    descricao: 'Procedimentos do EFAI para acompanhamento e avaliação da prática pedagógica dos professores.',
+    responsaveis: ['Coordenação Pedagógica', 'EFAI'],
+    keywords: ['EFAI','prática pedagógica','observação aula','avaliação professor','visita sala','feedback professor','desempenho pedagógico','qualidade ensino'],
+    solucao: [
+      'Agendar a observação de aula com antecedência ou realizar visita não anunciada.',
+      'Preencher o formulário EFAI de observação durante a visita.',
+      'Realizar feedback construtivo com o professor após a observação.',
+      'Registrar as práticas positivas e os pontos de desenvolvimento.',
+      'Definir metas e plano de desenvolvimento com o professor.',
+      'Repetir o processo no ciclo seguinte para verificar evolução.'
+    ]
+  },
+  {
+    num: '47', arquivo: 'POP 47 - EFAI_Diário de Classe e Controle de Notas 2026.docx (1) (1).pdf',
+    nome: 'EFAI — Diário de Classe e Controle de Notas',
+    descricao: 'Normas para lançamento e controle do diário de classe e registro de notas.',
+    responsaveis: ['Professores', 'Coordenação Pedagógica', 'EFAI'],
+    keywords: ['diário de classe','lançamento nota','controle nota','frequência diário','nota não lançada','diário atrasado','notas erradas','correção nota','diário professor'],
+    solucao: [
+      'Verificar se todos os professores estão lançando o diário de acordo com o prazo.',
+      'Identificar notas não lançadas ou com prazo vencido e comunicar ao professor.',
+      'Para correção de nota, preencher formulário específico com justificativa.',
+      'A correção de nota deve ser autorizada pela coordenação pedagógica.',
+      'Exportar relatório de pendências semanalmente para acompanhamento da gestão.'
+    ]
+  },
+  {
+    num: '48', arquivo: 'POP 48 - EFAI_Utilização de Fundo Fixo.docx.pdf',
+    nome: 'EFAI — Utilização de Fundo Fixo',
+    descricao: 'Normas para utilização, prestação de contas e controle do fundo fixo da unidade.',
+    responsaveis: ['Direção', 'Financeiro', 'Coordenação'],
+    keywords: ['fundo fixo','financeiro','recurso','compra','nota fiscal','prestação de contas','reembolso','gasto','despesa','material escola'],
+    solucao: [
+      'Identificar a necessidade e verificar se pode ser atendida pelo fundo fixo.',
+      'Solicitar autorização da direção antes de realizar o gasto.',
+      'Coletar nota fiscal ou comprovante de todas as despesas.',
+      'Preencher o relatório de prestação de contas conforme modelo EFAI.',
+      'Encaminhar para aprovação e arquivamento dentro do prazo estipulado.'
+    ]
+  },
+  {
+    num: '49', arquivo: 'POP 49 - Uso do celular na escola_Lei 15.100-2025.pdf',
+    nome: 'Uso do Celular na Escola — Lei 15.100/2025',
+    descricao: 'Define as regras de uso (ou proibição) do celular na escola conforme a nova legislação.',
+    responsaveis: ['Coordenação', 'Professores', 'Portaria'],
+    keywords: ['celular','telefone celular','smartphone','aparelho eletrônico','uso celular','proibir celular','lei celular','celular sala de aula','confiscar celular','aluno celular','aparelho celular'],
+    solucao: [
+      'Verificar se o uso do celular ocorreu em situação proibida pela Lei 15.100/2025.',
+      'Orientar o aluno sobre a legislação e as regras da escola de forma educativa.',
+      'Em caso de desobediência, reter o celular e comunicar os responsáveis.',
+      'Registrar a ocorrência no sistema com data e descrição.',
+      'Para reincidência, aplicar advertência formal conforme POP 02.',
+      'O celular retido deve ser entregue apenas ao responsável, nunca ao aluno.'
+    ]
+  },
+  {
+    num: '50', arquivo: 'POP 50 -  Uniformes.docx.pdf',
+    nome: 'Uniformes',
+    descricao: 'Define as normas de uso obrigatório do uniforme escolar e procedimentos para irregularidades.',
+    responsaveis: ['Coordenação', 'Portaria'],
+    keywords: ['uniforme','farda','roupa','sem uniforme','vestimenta','aluno sem uniforme','uniforme incompleto','irregularidade uniforme','traje'],
+    solucao: [
+      'Abordar o aluno sem uniforme na entrada ou ao ser identificado na escola.',
+      'Verificar se é situação eventual (esqueceu) ou recorrente.',
+      'Para situação eventual: registrar e orientar.',
+      'Para recorrência: comunicar a família e verificar se há dificuldade financeira.',
+      'Em casos de dificuldade, encaminhar à direção para verificação de apoio.',
+      'Registrar as irregularidades recorrentes no sistema.'
+    ]
+  },
+  {
+    num: '51', arquivo: 'POP 51 - Avaliação de Desempenho da Coordenação 2025.pdf',
+    nome: 'Avaliação de Desempenho da Coordenação',
+    descricao: 'Define os critérios e processo de avaliação de desempenho da equipe de coordenação.',
+    responsaveis: ['Direção', 'RH', 'Gestão Regional'],
+    keywords: ['avaliação coordenação','desempenho coordenação','avaliação gestão','meta coordenação','indicador desempenho','performance coordenação'],
+    solucao: [
+      'Reunir os indicadores de desempenho do período a ser avaliado.',
+      'Preencher o formulário de autoavaliação conforme modelo 2025.',
+      'Realizar reunião de feedback com a direção/gestão regional.',
+      'Definir plano de desenvolvimento para o próximo ciclo.',
+      'Arquivar o resultado da avaliação no prontuário do coordenador.'
+    ]
+  }
+];
+
+/* ===================================================
+   SESSÃO E ESTATÍSTICAS
+=================================================== */
+var consultas = parseInt(localStorage.getItem('pops_consultas_hoje') || '0');
+var ultimaData = localStorage.getItem('pops_data') || '';
+var hoje = new Date().toLocaleDateString('pt-BR');
+if (ultimaData !== hoje) { consultas = 0; localStorage.setItem('pops_data', hoje); }
+document.getElementById('consultas-stat').textContent = consultas;
+document.getElementById('total-pops-stat').textContent = POPS_DB.length;
+
+function salvarConsulta() {
+  consultas++;
+  localStorage.setItem('pops_consultas_hoje', consultas);
+  document.getElementById('consultas-stat').textContent = consultas;
+}
+
+/* ===================================================
+   MOTOR DE ANÁLISE
+=================================================== */
+function normalizar(texto) {
+  return texto.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s]/g, ' ');
+}
+
+function calcularRelevancia(pop, textoNorm) {
+  var score = 0;
+  var razoes = [];
+  pop.keywords.forEach(function(kw) {
+    var kwNorm = normalizar(kw);
+    if (textoNorm.indexOf(kwNorm) !== -1) {
+      var peso = kw.length > 8 ? 3 : kw.length > 4 ? 2 : 1;
+      score += peso;
+      razoes.push(kw);
+    }
+  });
+  // Bônus por nome do POP
+  var nomeNorm = normalizar(pop.nome);
+  var palavrasNome = nomeNorm.split(/\s+/).filter(function(w){ return w.length > 3; });
+  palavrasNome.forEach(function(w) {
+    if (textoNorm.indexOf(w) !== -1) { score += 2; }
+  });
+  return { score: score, razoes: razoes.slice(0, 4) };
+}
+
+function analisar() {
+  var input = document.getElementById('search-input').value.trim();
+  if (!input || input.length < 8) {
+    pulsarCampo(); return;
+  }
+  salvarConsulta();
+  var textoNorm = normalizar(input);
+
+  // Mostrar analyzing
+  var analyzing = document.getElementById('analyzing');
+  analyzing.classList.add('show');
+  document.getElementById('results-section').style.display = 'none';
+
+  setTimeout(function() {
+    analyzing.classList.remove('show');
+
+    // Calcular scores
+    var resultados = POPS_DB.map(function(pop) {
+      var r = calcularRelevancia(pop, textoNorm);
+      return { pop: pop, score: r.score, razoes: r.razoes };
+    }).filter(function(r) { return r.score > 0; });
+
+    // Ordenar por relevância
+    resultados.sort(function(a, b) { return b.score - a.score; });
+    resultados = resultados.slice(0, 6);
+
+    // Calcular % relativa
+    var maxScore = resultados.length > 0 ? resultados[0].score : 1;
+    resultados.forEach(function(r, idx) {
+      r.pct = Math.round(r.score / maxScore * 100);
+      r.nivel = idx === 0 ? 'primary' : idx < 3 ? 'secondary' : 'tertiary';
+      r.rankLabel = idx === 0 ? '1º' : idx === 1 ? '2º' : idx === 2 ? '3º' : (idx+1)+'º';
+      r.rankClass = idx === 0 ? 'rank-primary' : idx < 3 ? 'rank-secondary' : 'rank-tertiary';
+    });
+
+    renderResultados(resultados, input);
+  }, 900);
+}
+
+function renderResultados(resultados, query) {
+  var sec = document.getElementById('results-section');
+  var container = document.getElementById('results-container');
+  var badge = document.getElementById('results-badge');
+
+  if (resultados.length === 0) {
+    badge.textContent = 'Nenhum POP encontrado';
+    container.innerHTML = '<div class="no-results"><div class="no-results-icon">🔍</div><div style="font-size:16px;font-weight:700;margin-bottom:8px;">Nenhum POP identificado</div><div style="font-size:14px;">Tente descrever a situação com mais detalhes ou palavras-chave diferentes.<br>Você também pode navegar na lista de todos os POPs abaixo.</div></div>';
+    sec.style.display = 'block';
+    return;
+  }
+
+  badge.textContent = resultados.length + ' POP' + (resultados.length>1?'s':'') + ' encontrado' + (resultados.length>1?'s':'');
+  var html = '';
+
+  resultados.forEach(function(r, idx) {
+    var pop = r.pop;
+    var barColor = idx === 0 ? 'var(--green)' : idx < 3 ? 'var(--navy2)' : 'var(--text3)';
+    var razoesHtml = r.razoes.length > 0 ?
+      r.razoes.map(function(rz){ return '<span style="background:var(--bg3);border:1px solid var(--border2);border-radius:12px;padding:2px 9px;font-size:11px;font-family:var(--font-mono);color:var(--text2);">'+rz+'</span>'; }).join(' ') : '';
+
+    var stepsHtml = pop.solucao.map(function(step, si) {
+      return '<li class="step-item"><div class="step-num">'+(si+1)+'</div><div class="step-text">'+step+'</div></li>';
+    }).join('');
+
+    var respsHtml = pop.responsaveis.map(function(resp){
+      return '<span class="resp-chip">👤 '+resp+'</span>';
+    }).join('');
+
+    html += '<div class="pop-card '+r.nivel+'">';
+    html += '<div class="pop-card-hdr" onclick="toggleCard(\'pop-body-'+idx+'\')">';
+    html += '<div class="pop-rank-badge '+r.rankClass+'">'+r.rankLabel+'</div>';
+    html += '<div class="pop-hdr-info">';
+    html += '<div class="pop-num">POP '+pop.num+' • RELEVÂNCIA: '+r.pct+'%</div>';
+    html += '<div class="pop-name">'+pop.nome+'</div>';
+    html += '<div class="pop-match-reason">'+pop.descricao+'</div>';
+    if (razoesHtml) html += '<div style="margin-top:6px;display:flex;gap:5px;flex-wrap:wrap;">'+razoesHtml+'</div>';
+    html += '</div>';
+    html += '<div class="pop-hdr-right">';
+    html += '<div class="relevance-bar-wrap"><div class="relevance-bar-track"><div class="relevance-bar-fill" style="width:'+r.pct+'%;background:'+barColor+'"></div></div><span class="relevance-pct" style="color:'+barColor+'">'+r.pct+'%</span></div>';
+    html += '<span class="pop-expand-btn" id="expand-icon-'+idx+'">▼</span>';
+    html += '</div></div>';
+
+    // BODY
+    html += '<div class="pop-card-body" id="pop-body-'+idx+'">';
+    html += '<div class="pop-body-inner">';
+    // Solução
+    html += '<div class="solution-section">';
+    html += '<div class="solution-title">✅ Como Resolver — Passo a Passo</div>';
+    html += '<ul class="step-list">'+stepsHtml+'</ul>';
+    html += '</div>';
+    // Responsáveis
+    html += '<div style="margin-bottom:1rem;"><div style="font-size:12px;font-family:var(--font-mono);color:var(--text3);font-weight:600;margin-bottom:6px;letter-spacing:1px;">RESPONSÁVEIS:</div>';
+    html += '<div class="resps-row">'+respsHtml+'</div></div>';
+    // PDF
+    html += '<a class="pdf-btn" href="'+encodeURI(pop.arquivo)+'" target="_blank" rel="noopener">📄 Abrir PDF Completo — '+pop.nome+'</a>';
+    html += '</div></div>';
+    html += '</div>';
+  });
+
+  container.innerHTML = html;
+  sec.style.display = 'block';
+  // Abrir o primeiro automaticamente
+  setTimeout(function(){
+    var firstBody = document.getElementById('pop-body-0');
+    var firstIcon = document.getElementById('expand-icon-0');
+    if (firstBody) { firstBody.classList.add('open'); }
+    if (firstIcon) { firstIcon.classList.add('open'); }
+  }, 100);
+
+  sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function toggleCard(id) {
+  var body = document.getElementById(id);
+  var idx = id.replace('pop-body-', '');
+  var icon = document.getElementById('expand-icon-' + idx);
+  if (body) body.classList.toggle('open');
+  if (icon) icon.classList.toggle('open');
+}
+
+function pulsarCampo() {
+  var area = document.getElementById('search-input');
+  area.style.borderColor = 'var(--red)';
+  area.placeholder = '⚠️ Descreva a situação com pelo menos 8 caracteres...';
+  setTimeout(function(){ area.style.borderColor = ''; area.placeholder = 'Exemplo: Um aluno chegou atrasado e não tinha autorização dos pais...'; }, 2000);
+}
+
+function inserirExemplo(texto) {
+  document.getElementById('search-input').value = texto;
+  document.getElementById('search-input').focus();
+}
+
+function limpar() {
+  document.getElementById('search-input').value = '';
+  document.getElementById('results-section').style.display = 'none';
+  document.getElementById('analyzing').classList.remove('show');
+}
+
+/* ===================================================
+   GRID DE TODOS OS POPS
+=================================================== */
+function buildPopsGrid() {
+  var grid = document.getElementById('pops-grid');
+  grid.innerHTML = '';
+  POPS_DB.forEach(function(pop) {
+    var div = document.createElement('div');
+    div.className = 'pop-mini-card';
+    div.setAttribute('data-nome', normalizar(pop.nome));
+    div.setAttribute('data-num', pop.num);
+    div.innerHTML = '<span class="pop-mini-num">POP '+pop.num+'</span><span class="pop-mini-name">'+pop.nome+'</span>';
+    div.onclick = function() { window.open(encodeURI(pop.arquivo), '_blank'); };
+    grid.appendChild(div);
+  });
+}
+
+function filtrarMinis() {
+  var q = normalizar(document.getElementById('mini-search').value);
+  document.querySelectorAll('.pop-mini-card').forEach(function(card) {
+    var nome = card.getAttribute('data-nome');
+    var num = card.getAttribute('data-num');
+    var show = !q || nome.indexOf(q) !== -1 || ('pop '+num).indexOf(q) !== -1 || num.indexOf(q) !== -1;
+    card.style.display = show ? '' : 'none';
+  });
+}
+
+// Permitir Enter para analisar
+document.getElementById('search-input').addEventListener('keydown', function(e) {
+  if (e.ctrlKey && e.key === 'Enter') analisar();
+});
+
+buildPopsGrid();
+</script>
+</body>
+</html>
