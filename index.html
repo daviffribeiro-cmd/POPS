@@ -847,7 +847,7 @@ var POPS_DB = [
     nome: 'Conselho Tutelar — Excesso de Faltas',
     descricao: 'Define quando e como comunicar o Conselho Tutelar sobre excesso de faltas de aluno.',
     responsaveis: ['Coordenação', 'Direção', 'SOE'],
-    keywords: ['conselho tutelar','excesso de faltas','muitas faltas','faltas repetidas','falta acumulada','notificar conselho','protecao crianca','faltas injustificadas','aluno faltando muito','evasao escolar','aluno sumiu','nao aparece ha dias','falta desde semana','muitas faltas injustificadas','nao vem a escola','falta excessiva','acima de 25 por cento','evasao','comunicar conselho','aluno evadiu','aluno desapareceu','nao veio mais','faltas demais'],
+    keywords: ['conselho tutelar','excesso de faltas','muitas faltas','faltas repetidas','falta acumulada','notificar conselho','protecao crianca','faltas injustificadas','aluno faltando muito','evasao escolar','aluno sumiu','nao aparece ha dias','falta desde semana','muitas faltas injustificadas','nao vem a escola','falta excessiva','acima de 25 por cento','evasao','comunicar conselho','aluno evadiu','aluno desapareceu','nao veio mais','faltas demais','aluno faltando seguido','faltas consecutivas','falta toda semana','ausencias repetidas','historico de faltas'],
     solucao: [
       'Verificar o total de faltas do aluno no sistema — acima de 25% é considerado excesso.',
       'Tentar contato com a família por todos os meios disponíveis (telefone, Layers, carta).',
@@ -863,7 +863,7 @@ var POPS_DB = [
     nome: 'Conselho Tutelar — Intolerância e/ou Assédio',
     descricao: 'Protocolo para denúncia ao Conselho Tutelar em casos de intolerância, discriminação ou assédio.',
     responsaveis: ['Direção', 'SOE', 'Coordenação'],
-    keywords: ['intolerancia','assedio','discriminacao','preconceito','conselho tutelar','violencia escolar','racismo','homofobia','xenofobia','denuncia','violencia','abuso','maus tratos','denunciar','sofreu assedio','foi assediado','marcas no corpo','suspeita de abuso','relato de violencia','abuso domestico','violencia em casa','crianca em risco','menor em risco','violencia familiar','maus-tratos','vitima de agressao','situacao de risco','crianca sofrendo'],
+    keywords: ['intolerancia','assedio','discriminacao','preconceito','conselho tutelar','violencia escolar','racismo','homofobia','xenofobia','denuncia','violencia','abuso','maus tratos','denunciar','sofreu assedio','foi assediado','marcas no corpo','suspeita de abuso','relato de violencia','abuso domestico','violencia em casa','crianca em risco','menor em risco','violencia familiar','maus-tratos','vitima de agressao','situacao de risco','crianca sofrendo','macaco','chamou de macaco','xingou de macaco','xingamento racial','ofensa racial','insulto racial','injuria racial','racista','apelido racista','comentario racista','apelido preconceituoso','apelido humilhante','discriminacao racial','ofensa por caracteristica','xingamento discriminatorio','comentario discriminatorio','preconceito racial'],
     solucao: [
       'Acolher a vítima em ambiente seguro e confidencial.',
       'Ouvir o relato sem questionamentos que possam revitimizar.',
@@ -908,7 +908,7 @@ var POPS_DB = [
     nome: 'Orientação sobre Formas de Assédio',
     descricao: 'Material de orientação sobre identificação e combate ao assédio no ambiente escolar.',
     responsaveis: ['SOE', 'Direção', 'Todos os Colaboradores'],
-    keywords: ['assedio','assedio sexual','assedio moral','bullying','cyberbullying','violencia psicologica','abuso','intimidacao','ameaca','humilhacao','coacao','vitima assedio','formas de assedio','proteger aluno','aluno sendo humilhado','vitima de bullying','esta sofrendo','colega xingando','colega bateu','apelidando','zoando','tirando sarro','excluindo aluno','perseguicao','intimidando','ameacando colega','pressao psicologica','sofre bullying','bullying escolar'],
+    keywords: ['assedio','assedio sexual','assedio moral','bullying','cyberbullying','violencia psicologica','abuso','intimidacao','ameaca','humilhacao','coacao','vitima assedio','formas de assedio','proteger aluno','aluno sendo humilhado','vitima de bullying','esta sofrendo','colega xingando','colega bateu','apelidando','zoando','tirando sarro','excluindo aluno','perseguicao','intimidando','ameacando colega','pressao psicologica','sofre bullying','bullying escolar','macaco','chamou de macaco','xingou de macaco','apelido ofensivo','apelido maldoso','apelido cruel','chamou de nome','xingamento ofensivo','ofensa verbal','chamando de nomes','xingou com apelido','colega humilhando','aluno humilhando','xingamento entre alunos','provocacao verbal'],
     solucao: [
       'Identificar os sinais de assédio: isolamento, tristeza, queda de desempenho, marcas físicas.',
       'Acolher imediatamente o aluno/funcionário vítima.',
@@ -1071,7 +1071,7 @@ var POPS_DB = [
     nome: 'EFAI — Diário de Classe e Controle de Notas',
     descricao: 'Normas para lançamento e controle do diário de classe e registro de notas.',
     responsaveis: ['Professores', 'Coordenação Pedagógica', 'EFAI'],
-    keywords: ['diario de classe','lancamento nota','controle nota','frequencia diario','nota nao lancada','diario atrasado','notas erradas','correcao nota','diario professor','diario nao atualizado','professor nao lancou nota','nota atrasada','frequencia nao lancada','diario com erro','nota errada no sistema','precisa corrigir nota','lancamento atrasado','frequencia errada','diario incompleto'],
+    keywords: ['diario de classe','lancamento nota','controle nota','frequencia diario','nota nao lancada','diario atrasado','notas erradas','correcao nota','diario professor','diario nao atualizado','professor nao lancou nota','nota atrasada','frequencia nao lancada','diario com erro','nota errada no sistema','precisa corrigir nota','lancamento atrasado','frequencia errada','diario incompleto','aluno faltou','aluno ausente','aluno nao veio','falta do aluno','ausencia aluno','registrar falta','registrar ausencia','aluno faltou aula','lancamento frequencia','ausencia na aula','aluno nao compareceu','registrar presenca'],
     solucao: [
       'Verificar se todos os professores estão lançando o diário de acordo com o prazo.',
       'Identificar notas não lançadas ou com prazo vencido e comunicar ao professor.',
@@ -1170,6 +1170,22 @@ function calcularRelevancia(pop, textoNorm) {
   var razoes = [];
   var jaContou = {};
 
+  // Palavras muito comuns no dominio escolar — excluidas do match parcial para evitar falsos positivos
+  var domainStop = {
+    aluno:1, alunos:1, professor:1, professores:1, escola:1, escolar:1,
+    turma:1, turmas:1, sala:1, aula:1, aulas:1,
+    outro:1, outra:1, outros:1, outras:1,
+    para:1, mais:1, como:1, esse:1, essa:1, este:1, esta:1, seus:1, suas:1,
+    sendo:1, fazer:1, veio:1, pelo:1, pela:1, pelos:1, pelas:1,
+    faltou:1, falta:1, faltas:1, faltando:1
+  };
+
+  // Pre-computar palavras do texto (>3 chars, excluindo domainStop) para match parcial
+  var palavrasTexto = {};
+  textoNorm.split(/\s+/).forEach(function(w) {
+    if (w.length > 3 && !domainStop[w]) palavrasTexto[w] = true;
+  });
+
   // 1. Correspondencia de frases completas (maior peso)
   pop.keywords.forEach(function(kw) {
     var kwNorm = normalizar(kw);
@@ -1181,7 +1197,32 @@ function calcularRelevancia(pop, textoNorm) {
     }
   });
 
-  // 2. Bonus por palavras do nome do POP encontradas no texto
+  // 2. Correspondencia parcial por palavras individuais das keywords
+  pop.keywords.forEach(function(kw) {
+    var kwNorm = normalizar(kw);
+    if (textoNorm.indexOf(kwNorm) !== -1) return; // ja contou na fase 1
+    var palavrasKw = kwNorm.split(/\s+/).filter(function(w){ return w.length > 3 && !domainStop[w]; });
+    if (palavrasKw.length === 0) return;
+    var numMatch = 0;
+    palavrasKw.forEach(function(w) { if (palavrasTexto[w]) numMatch++; });
+    if (numMatch === 0) return;
+    var proporcao = numMatch / palavrasKw.length;
+    var peso = 0;
+    if (palavrasKw.length === 1) {
+      peso = 1;
+    } else if (proporcao >= 0.8) {
+      peso = 3;
+    } else if (proporcao >= 0.5) {
+      peso = 2;
+    } else {
+      return; // menos de 50% das palavras bateram — ignorar
+    }
+    score += peso;
+    razoes.push(kw);
+    palavrasKw.forEach(function(w){ if (palavrasTexto[w]) jaContou[w] = true; });
+  });
+
+  // 3. Bonus por palavras do nome do POP encontradas no texto
   var nomeNorm = normalizar(pop.nome);
   nomeNorm.split(/\s+/).filter(function(w){ return w.length > 5; }).forEach(function(w) {
     if (textoNorm.indexOf(w) !== -1 && !jaContou[w]) { score += 2; jaContou[w] = true; }
